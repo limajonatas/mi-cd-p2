@@ -1,0 +1,19 @@
+module main_module(input wire clk, input reset);
+    wire clock_out; // Sinal de saída do módulo clk
+
+    // Instanciar o módulo clk
+    clk clk_inst(
+        .clock(clk),
+        .reset(reset),
+        .clock_out(clock_out)
+    );
+
+    // Instanciar o módulo matriz e conectar clock_out a clock_in
+    //matriz matriz_inst(
+    //    .clock_in(clock_out), // Conecte a saída do clk à entrada do matriz
+        // Outros sinais de entrada/saída do módulo matriz
+    //);
+
+    // Seu código principal aqui
+
+endmodule

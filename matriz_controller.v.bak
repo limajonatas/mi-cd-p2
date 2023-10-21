@@ -1,0 +1,14 @@
+module matriz_controller(
+	input clk, 
+	output [4:0] colunas, 
+	output [6:0] linhas
+);
+
+
+
+always @
+
+
+
+
+

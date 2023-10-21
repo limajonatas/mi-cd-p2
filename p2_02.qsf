@@ -1,0 +1,100 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2023  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+# Date created = 15:43:47  September 22, 2023
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		p2_02_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX II"
+set_global_assignment -name DEVICE EPM240T100C5
+set_global_assignment -name TOP_LEVEL_ENTITY main_module
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.2
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:43:47  SEPTEMBER 22, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.2 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
+set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH main_module -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME BatalhaNaval -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id BatalhaNaval
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME BatalhaNaval -section_id BatalhaNaval
+set_global_assignment -name EDA_TEST_BENCH_NAME clock -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id clock
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME clock -section_id clock
+set_global_assignment -name EDA_TEST_BENCH_NAME Clock_divider -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Clock_divider
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Clock_divider -section_id Clock_divider
+set_global_assignment -name VERILOG_FILE clk.v
+set_global_assignment -name VERILOG_FILE main_module.v
+set_global_assignment -name EDA_TEST_BENCH_NAME main_module -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id main_module
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME main_module -section_id main_module
+set_global_assignment -name EDA_TEST_BENCH_FILE BatalhaNaval.v -section_id BatalhaNaval
+set_global_assignment -name EDA_TEST_BENCH_FILE clock.v -section_id clock
+set_global_assignment -name EDA_TEST_BENCH_FILE Clock_divider.v -section_id Clock_divider
+set_global_assignment -name EDA_TEST_BENCH_FILE main_module.v -section_id main_module
+set_global_assignment -name VERILOG_FILE matriz_controller.v
+set_location_assignment PIN_12 -to clock
+set_location_assignment PIN_97 -to colunas[0]
+set_location_assignment PIN_99 -to colunas[1]
+set_location_assignment PIN_95 -to colunas[2]
+set_location_assignment PIN_82 -to colunas[3]
+set_location_assignment PIN_78 -to colunas[4]
+set_location_assignment PIN_85 -to linhas[0]
+set_location_assignment PIN_83 -to linhas[1]
+set_location_assignment PIN_84 -to linhas[2]
+set_location_assignment PIN_87 -to linhas[3]
+set_location_assignment PIN_81 -to linhas[4]
+set_location_assignment PIN_91 -to linhas[5]
+set_location_assignment PIN_89 -to linhas[6]
+set_location_assignment PIN_42 -to reset
+set_location_assignment PIN_56 -to clock_out
+set_global_assignment -name VERILOG_FILE debouncer_button.v
+set_location_assignment PIN_86 -to red
+set_location_assignment PIN_52 -to button
+set_global_assignment -name VERILOG_FILE game_select.v
+set_global_assignment -name VERILOG_FILE game_register.v
