@@ -96,5 +96,5 @@ set_location_assignment PIN_56 -to clock_out
 set_global_assignment -name VERILOG_FILE debouncer_button.v
 set_location_assignment PIN_86 -to red
 set_location_assignment PIN_52 -to button
-set_global_assignment -name VERILOG_FILE game_select.v
-set_global_assignment -name VERILOG_FILE game_register.v
+set_global_assignment -name VERILOG_FILE game_selection.v
+set_global_assignment -name VERILOG_FILE game_option_change.v

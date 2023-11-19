@@ -63,40 +63,40 @@ CHIP  "p2_02"  ASSIGNED TO AN: EPM240T100C5
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-GND*                         : 1         :        :                   :         : 2         :                
+lines[3]                     : 1         : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 2         :        :                   :         : 1         :                
-game_charge_button           : 3         : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 3         :        :                   :         : 1         :                
 GND*                         : 4         :        :                   :         : 1         :                
-columns_attack[2]            : 5         : input  : 3.3-V LVTTL       :         : 1         : N              
-clock_output                 : 6         : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 7         :        :                   :         : 1         :                
-GND*                         : 8         :        :                   :         : 1         :                
+GND*                         : 5         :        :                   :         : 1         :                
+GND*                         : 6         :        :                   :         : 1         :                
+clock_output                 : 7         : output : 3.3-V LVTTL       :         : 1         : N              
+change_game_button           : 8         : input  : 3.3-V LVTTL       :         : 1         : N              
 VCCIO1                       : 9         : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 10        : gnd    :                   :         :           :                
 GNDINT                       : 11        : gnd    :                   :         :           :                
 clock                        : 12        : input  : 3.3-V LVTTL       :         : 1         : Y              
 VCCINT                       : 13        : power  :                   : 2.5V/3.3V :           :                
-GND*                         : 14        :        :                   :         : 1         :                
-columns_attack[1]            : 15        : input  : 3.3-V LVTTL       :         : 1         : N              
+lines[5]                     : 14        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 15        :        :                   :         : 1         :                
 GND*                         : 16        :        :                   :         : 1         :                
-lines[2]                     : 17        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 17        :        :                   :         : 1         :                
 GND*                         : 18        :        :                   :         : 1         :                
 GND*                         : 19        :        :                   :         : 1         :                
-lines[3]                     : 20        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 20        :        :                   :         : 1         :                
 GND*                         : 21        :        :                   :         : 1         :                
 TMS                          : 22        : input  :                   :         : 1         :                
 TDI                          : 23        : input  :                   :         : 1         :                
 TCK                          : 24        : input  :                   :         : 1         :                
 TDO                          : 25        : output :                   :         : 1         :                
-GND*                         : 26        :        :                   :         : 1         :                
-GND*                         : 27        :        :                   :         : 1         :                
+lines[2]                     : 26        : output : 3.3-V LVTTL       :         : 1         : N              
+columns_attack[2]            : 27        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 28        :        :                   :         : 1         :                
-lines[4]                     : 29        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 29        :        :                   :         : 1         :                
 GND*                         : 30        :        :                   :         : 1         :                
 VCCIO1                       : 31        : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 32        : gnd    :                   :         :           :                
-columns_attack[0]            : 33        : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 34        :        :                   :         : 1         :                
+GND*                         : 33        :        :                   :         : 1         :                
+save_game_button             : 34        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 35        :        :                   :         : 1         :                
 GND*                         : 36        :        :                   :         : 1         :                
 GND*                         : 37        :        :                   :         : 1         :                
@@ -104,8 +104,8 @@ GND*                         : 38        :        :                   :         
 GND*                         : 39        :        :                   :         : 1         :                
 GND*                         : 40        :        :                   :         : 1         :                
 GND*                         : 41        :        :                   :         : 1         :                
-GND*                         : 42        :        :                   :         : 1         :                
-lines[1]                     : 43        : output : 3.3-V LVTTL       :         : 1         : N              
+rows_attack[2]               : 42        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 43        :        :                   :         : 1         :                
 GND*                         : 44        :        :                   :         : 1         :                
 VCCIO1                       : 45        : power  :                   : 3.3V    : 1         :                
 GNDIO                        : 46        : gnd    :                   :         :           :                
@@ -113,29 +113,29 @@ GND*                         : 47        :        :                   :         
 GND*                         : 48        :        :                   :         : 1         :                
 GND*                         : 49        :        :                   :         : 1         :                
 GND*                         : 50        :        :                   :         : 1         :                
-lines[6]                     : 51        : output : 3.3-V LVTTL       :         : 1         : N              
-columns[4]                   : 52        : output : 3.3-V LVTTL       :         : 2         : N              
-columns[3]                   : 53        : output : 3.3-V LVTTL       :         : 2         : N              
-columns[0]                   : 54        : output : 3.3-V LVTTL       :         : 2         : N              
-columns[1]                   : 55        : output : 3.3-V LVTTL       :         : 2         : N              
-columns[2]                   : 56        : output : 3.3-V LVTTL       :         : 2         : N              
-status[1]                    : 57        : input  : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 58        :        :                   :         : 2         :                
+lines[4]                     : 51        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 52        :        :                   :         : 2         :                
+GND*                         : 53        :        :                   :         : 2         :                
+GND*                         : 54        :        :                   :         : 2         :                
+GND*                         : 55        :        :                   :         : 2         :                
+GND*                         : 56        :        :                   :         : 2         :                
+GND*                         : 57        :        :                   :         : 2         :                
+rows_attack[0]               : 58        : input  : 3.3-V LVTTL       :         : 2         : N              
 VCCIO2                       : 59        : power  :                   : 3.3V    : 2         :                
 GNDIO                        : 60        : gnd    :                   :         :           :                
-rows_attack[0]               : 61        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 61        :        :                   :         : 2         :                
 GND*                         : 62        :        :                   :         : 2         :                
 VCCINT                       : 63        : power  :                   : 2.5V/3.3V :           :                
-status[0]                    : 64        : input  : 3.3-V LVTTL       :         : 2         : N              
+columns[0]                   : 64        : output : 3.3-V LVTTL       :         : 2         : N              
 GNDINT                       : 65        : gnd    :                   :         :           :                
-GND*                         : 66        :        :                   :         : 2         :                
-GND*                         : 67        :        :                   :         : 2         :                
-GND*                         : 68        :        :                   :         : 2         :                
-GND*                         : 69        :        :                   :         : 2         :                
-lines[0]                     : 70        : output : 3.3-V LVTTL       :         : 2         : N              
+columns[3]                   : 66        : output : 3.3-V LVTTL       :         : 2         : N              
+columns[1]                   : 67        : output : 3.3-V LVTTL       :         : 2         : N              
+reset_save_game_button       : 68        : input  : 3.3-V LVTTL       :         : 2         : N              
+select_game_button           : 69        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 70        :        :                   :         : 2         :                
 GND*                         : 71        :        :                   :         : 2         :                
 GND*                         : 72        :        :                   :         : 2         :                
-GND*                         : 73        :        :                   :         : 2         :                
+attack_button                : 73        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 74        :        :                   :         : 2         :                
 GND*                         : 75        :        :                   :         : 2         :                
 GND*                         : 76        :        :                   :         : 2         :                
@@ -143,23 +143,23 @@ GND*                         : 77        :        :                   :         
 GND*                         : 78        :        :                   :         : 2         :                
 GNDIO                        : 79        : gnd    :                   :         :           :                
 VCCIO2                       : 80        : power  :                   : 3.3V    : 2         :                
-GND*                         : 81        :        :                   :         : 2         :                
-GND*                         : 82        :        :                   :         : 2         :                
-rows_attack[2]               : 83        : input  : 3.3-V LVTTL       :         : 2         : N              
-attack_button                : 84        : input  : 3.3-V LVTTL       :         : 2         : N              
+columns[2]                   : 81        : output : 3.3-V LVTTL       :         : 2         : N              
+columns[4]                   : 82        : output : 3.3-V LVTTL       :         : 2         : N              
+lines[0]                     : 83        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 84        :        :                   :         : 2         :                
 GND*                         : 85        :        :                   :         : 2         :                
-GND*                         : 86        :        :                   :         : 2         :                
+columns_attack[1]            : 86        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 87        :        :                   :         : 2         :                
 GND*                         : 88        :        :                   :         : 2         :                
-GND*                         : 89        :        :                   :         : 2         :                
+status[0]                    : 89        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 90        :        :                   :         : 2         :                
-save_game_button             : 91        : input  : 3.3-V LVTTL       :         : 2         : N              
-rows_attack[1]               : 92        : input  : 3.3-V LVTTL       :         : 2         : N              
+rows_attack[1]               : 91        : input  : 3.3-V LVTTL       :         : 2         : N              
+lines[1]                     : 92        : output : 3.3-V LVTTL       :         : 2         : N              
 GNDIO                        : 93        : gnd    :                   :         :           :                
 VCCIO2                       : 94        : power  :                   : 3.3V    : 2         :                
-reset_save_game_button       : 95        : input  : 3.3-V LVTTL       :         : 2         : N              
+columns_attack[0]            : 95        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 96        :        :                   :         : 2         :                
-GND*                         : 97        :        :                   :         : 2         :                
-lines[5]                     : 98        : output : 3.3-V LVTTL       :         : 2         : N              
+lines[6]                     : 97        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 98        :        :                   :         : 2         :                
 GND*                         : 99        :        :                   :         : 2         :                
-GND*                         : 100       :        :                   :         : 2         :                
+status[1]                    : 100       : input  : 3.3-V LVTTL       :         : 2         : N              

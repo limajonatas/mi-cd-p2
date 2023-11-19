@@ -58,7 +58,7 @@ module matriz_controller(
 					end
 			  endcase
 			end
-			else if(show[1]) begin //EXIBE NA MATRIZ OS PONTOS QUE O JOGADOR ACERTOU O ALVO
+			else if(show[1]) begin //EXIBE NA MATRIZ OS PONTOS QUE O JOGADOR 2 ACERTOU O ALVO
 				case (count)
 					4'd0: begin //COLUNA 01
 						 columns <= 5'b00001;

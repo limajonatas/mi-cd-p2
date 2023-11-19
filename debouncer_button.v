@@ -1,3 +1,4 @@
+/*MÓDULO RESPONSÁVEL POR TRATAR O RUIDO DO BOTÃO*/
 module debouncer_button(
 	input button, 
 	input clk, 

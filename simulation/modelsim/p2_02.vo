@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition"
 
-// DATE "10/21/2023 15:09:31"
+// DATE "11/19/2023 00:12:19"
 
 // 
 // Device: Altera EPM240T100C5 Package TQFP100
@@ -34,7 +34,8 @@ module main_module (
 	columns_attack,
 	rows_attack,
 	attack_button,
-	game_charge_button,
+	change_game_button,
+	select_game_button,
 	save_game_button,
 	reset_save_game_button,
 	clock,
@@ -45,7 +46,8 @@ input 	[1:0] status;
 input 	[2:0] columns_attack;
 input 	[2:0] rows_attack;
 input 	attack_button;
-input 	game_charge_button;
+input 	change_game_button;
+input 	select_game_button;
 input 	save_game_button;
 input 	reset_save_game_button;
 input 	clock;
@@ -103,7 +105,23 @@ wire \clock_divider|Equal0~2_combout ;
 wire \clock_divider|out~regout ;
 wire \matrix|columns[0]~0 ;
 wire \matrix|Decoder0~0 ;
+wire \change_game_button~combout ;
+wire \btn_change_game|debouncer~regout ;
+wire \change_game_option|game_reg.0010~regout ;
+wire \change_game_option|game_reg.0100~regout ;
+wire \change_game_option|game_reg.1000~regout ;
+wire \change_game_option|game_reg.0000~regout ;
+wire \change_game_option|game_reg.0001~regout ;
+wire \select_game_button~combout ;
+wire \reset_save_game_button~combout ;
+wire \select_game_option|game_selected~1_combout ;
+wire \select_game_option|game_selected~0_combout ;
+wire \select_game_option|game_selected~combout ;
+wire \select_game_option|col1[6]~0_combout ;
+wire [6:0] \select_game_option|col2 ;
 wire [4:0] \matrix|columns ;
+wire [6:0] \matrix|lines ;
+wire [2:0] \btn_change_game|state ;
 wire [3:0] \matrix|count ;
 wire [15:0] \clock_divider|count ;
 
@@ -118,7 +136,7 @@ maxii_io \clock~I (
 defparam \clock~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N2
+// Location: LC_X6_Y2_N2
 maxii_lcell \clock_divider|count[0] (
 // Equation(s):
 // \clock_divider|count [0] = DFFEAS(((!\clock_divider|count [0])), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -156,7 +174,7 @@ defparam \clock_divider|count[0] .sum_lutc_input = "datac";
 defparam \clock_divider|count[0] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N3
+// Location: LC_X6_Y2_N3
 maxii_lcell \clock_divider|count[1] (
 // Equation(s):
 // \clock_divider|count [1] = DFFEAS(\clock_divider|count [1] $ ((((\clock_divider|count[0]~1 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -196,7 +214,7 @@ defparam \clock_divider|count[1] .sum_lutc_input = "cin";
 defparam \clock_divider|count[1] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N4
+// Location: LC_X6_Y2_N4
 maxii_lcell \clock_divider|count[2] (
 // Equation(s):
 // \clock_divider|count [2] = DFFEAS(\clock_divider|count [2] $ ((((!\clock_divider|count[1]~3 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -235,7 +253,7 @@ defparam \clock_divider|count[2] .sum_lutc_input = "cin";
 defparam \clock_divider|count[2] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N5
+// Location: LC_X6_Y2_N5
 maxii_lcell \clock_divider|count[3] (
 // Equation(s):
 // \clock_divider|count [3] = DFFEAS(\clock_divider|count [3] $ ((((\clock_divider|count[2]~5 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -274,7 +292,7 @@ defparam \clock_divider|count[3] .sum_lutc_input = "cin";
 defparam \clock_divider|count[3] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N6
+// Location: LC_X6_Y2_N6
 maxii_lcell \clock_divider|count[4] (
 // Equation(s):
 // \clock_divider|count [4] = DFFEAS(\clock_divider|count [4] $ ((((!(!\clock_divider|count[2]~5  & \clock_divider|count[3]~7 ) # (\clock_divider|count[2]~5  & \clock_divider|count[3]~7COUT1_35 ))))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -315,7 +333,7 @@ defparam \clock_divider|count[4] .sum_lutc_input = "cin";
 defparam \clock_divider|count[4] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N7
+// Location: LC_X6_Y2_N7
 maxii_lcell \clock_divider|count[5] (
 // Equation(s):
 // \clock_divider|count [5] = DFFEAS((\clock_divider|count [5] $ (((!\clock_divider|count[2]~5  & \clock_divider|count[4]~9 ) # (\clock_divider|count[2]~5  & \clock_divider|count[4]~9COUT1_36 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -356,7 +374,7 @@ defparam \clock_divider|count[5] .sum_lutc_input = "cin";
 defparam \clock_divider|count[5] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N8
+// Location: LC_X6_Y2_N8
 maxii_lcell \clock_divider|count[6] (
 // Equation(s):
 // \clock_divider|count [6] = DFFEAS(\clock_divider|count [6] $ ((((!(!\clock_divider|count[2]~5  & \clock_divider|count[5]~11 ) # (\clock_divider|count[2]~5  & \clock_divider|count[5]~11COUT1_37 ))))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -397,7 +415,7 @@ defparam \clock_divider|count[6] .sum_lutc_input = "cin";
 defparam \clock_divider|count[6] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N9
+// Location: LC_X6_Y2_N9
 maxii_lcell \clock_divider|count[7] (
 // Equation(s):
 // \clock_divider|count [7] = DFFEAS((\clock_divider|count [7] $ (((!\clock_divider|count[2]~5  & \clock_divider|count[6]~13 ) # (\clock_divider|count[2]~5  & \clock_divider|count[6]~13COUT1_38 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -437,7 +455,7 @@ defparam \clock_divider|count[7] .sum_lutc_input = "cin";
 defparam \clock_divider|count[7] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N0
+// Location: LC_X7_Y2_N0
 maxii_lcell \clock_divider|count[8] (
 // Equation(s):
 // \clock_divider|count [8] = DFFEAS((\clock_divider|count [8] $ ((!\clock_divider|count[7]~15 ))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -476,7 +494,7 @@ defparam \clock_divider|count[8] .sum_lutc_input = "cin";
 defparam \clock_divider|count[8] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N1
+// Location: LC_X7_Y2_N1
 maxii_lcell \clock_divider|count[9] (
 // Equation(s):
 // \clock_divider|count [9] = DFFEAS((\clock_divider|count [9] $ (((!\clock_divider|count[7]~15  & \clock_divider|count[8]~17 ) # (\clock_divider|count[7]~15  & \clock_divider|count[8]~17COUT1_39 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -517,7 +535,7 @@ defparam \clock_divider|count[9] .sum_lutc_input = "cin";
 defparam \clock_divider|count[9] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N2
+// Location: LC_X7_Y2_N2
 maxii_lcell \clock_divider|count[10] (
 // Equation(s):
 // \clock_divider|count [10] = DFFEAS((\clock_divider|count [10] $ ((!(!\clock_divider|count[7]~15  & \clock_divider|count[9]~19 ) # (\clock_divider|count[7]~15  & \clock_divider|count[9]~19COUT1_40 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -558,7 +576,7 @@ defparam \clock_divider|count[10] .sum_lutc_input = "cin";
 defparam \clock_divider|count[10] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N3
+// Location: LC_X7_Y2_N3
 maxii_lcell \clock_divider|count[11] (
 // Equation(s):
 // \clock_divider|count [11] = DFFEAS(\clock_divider|count [11] $ (((((!\clock_divider|count[7]~15  & \clock_divider|count[10]~21 ) # (\clock_divider|count[7]~15  & \clock_divider|count[10]~21COUT1_41 ))))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -599,7 +617,7 @@ defparam \clock_divider|count[11] .sum_lutc_input = "cin";
 defparam \clock_divider|count[11] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N9
+// Location: LC_X7_Y2_N8
 maxii_lcell \clock_divider|Equal0~3 (
 // Equation(s):
 // \clock_divider|Equal0~3_combout  = (\clock_divider|count [11] & (\clock_divider|count [10] & (\clock_divider|count [8] & \clock_divider|count [9])))
@@ -635,7 +653,7 @@ defparam \clock_divider|Equal0~3 .sum_lutc_input = "datac";
 defparam \clock_divider|Equal0~3 .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N4
+// Location: LC_X7_Y2_N4
 maxii_lcell \clock_divider|count[12] (
 // Equation(s):
 // \clock_divider|count [12] = DFFEAS(\clock_divider|count [12] $ ((((!(!\clock_divider|count[7]~15  & \clock_divider|count[11]~23 ) # (\clock_divider|count[7]~15  & \clock_divider|count[11]~23COUT1_42 ))))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -675,7 +693,7 @@ defparam \clock_divider|count[12] .sum_lutc_input = "cin";
 defparam \clock_divider|count[12] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N5
+// Location: LC_X7_Y2_N5
 maxii_lcell \clock_divider|count[13] (
 // Equation(s):
 // \clock_divider|count [13] = DFFEAS(\clock_divider|count [13] $ ((((\clock_divider|count[12]~25 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -714,7 +732,7 @@ defparam \clock_divider|count[13] .sum_lutc_input = "cin";
 defparam \clock_divider|count[13] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N6
+// Location: LC_X7_Y2_N6
 maxii_lcell \clock_divider|count[14] (
 // Equation(s):
 // \clock_divider|count [14] = DFFEAS(\clock_divider|count [14] $ ((((!(!\clock_divider|count[12]~25  & \clock_divider|count[13]~27 ) # (\clock_divider|count[12]~25  & \clock_divider|count[13]~27COUT1_43 ))))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -755,7 +773,7 @@ defparam \clock_divider|count[14] .sum_lutc_input = "cin";
 defparam \clock_divider|count[14] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N7
+// Location: LC_X7_Y2_N7
 maxii_lcell \clock_divider|count[15] (
 // Equation(s):
 // \clock_divider|count [15] = DFFEAS((\clock_divider|count [15] $ (((!\clock_divider|count[12]~25  & \clock_divider|count[14]~29 ) # (\clock_divider|count[12]~25  & \clock_divider|count[14]~29COUT1_44 )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -794,7 +812,7 @@ defparam \clock_divider|count[15] .sum_lutc_input = "cin";
 defparam \clock_divider|count[15] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y3_N8
+// Location: LC_X7_Y2_N9
 maxii_lcell \clock_divider|Equal0~4 (
 // Equation(s):
 // \clock_divider|Equal0~4_combout  = (\clock_divider|count [14] & (\clock_divider|count [15] & (\clock_divider|count [13] & \clock_divider|count [12])))
@@ -830,7 +848,7 @@ defparam \clock_divider|Equal0~4 .sum_lutc_input = "datac";
 defparam \clock_divider|Equal0~4 .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N0
+// Location: LC_X6_Y2_N0
 maxii_lcell \clock_divider|Equal0~0 (
 // Equation(s):
 // \clock_divider|Equal0~0_combout  = ((\clock_divider|count [0] & ((\clock_divider|count [1]))))
@@ -866,7 +884,7 @@ defparam \clock_divider|Equal0~0 .sum_lutc_input = "datac";
 defparam \clock_divider|Equal0~0 .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X6_Y3_N1
+// Location: LC_X6_Y2_N1
 maxii_lcell \clock_divider|Equal0~1 (
 // Equation(s):
 // \clock_divider|Equal0~1_combout  = (\clock_divider|count [4] & (\clock_divider|count [7] & (\clock_divider|count [5] & \clock_divider|count [6])))
@@ -902,7 +920,7 @@ defparam \clock_divider|Equal0~1 .sum_lutc_input = "datac";
 defparam \clock_divider|Equal0~1 .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X5_Y3_N1
+// Location: LC_X5_Y2_N3
 maxii_lcell \clock_divider|Equal0~2 (
 // Equation(s):
 // \clock_divider|Equal0~2_combout  = (\clock_divider|count [3] & (\clock_divider|count [2] & (\clock_divider|Equal0~0_combout  & \clock_divider|Equal0~1_combout )))
@@ -938,7 +956,7 @@ defparam \clock_divider|Equal0~2 .sum_lutc_input = "datac";
 defparam \clock_divider|Equal0~2 .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X5_Y3_N2
+// Location: LC_X5_Y2_N4
 maxii_lcell \clock_divider|out (
 // Equation(s):
 // \clock_divider|out~regout  = DFFEAS(\clock_divider|out~regout  $ (((\clock_divider|Equal0~3_combout  & (\clock_divider|Equal0~4_combout  & \clock_divider|Equal0~2_combout )))), GLOBAL(\clock~combout ), VCC, , , , , , )
@@ -974,7 +992,79 @@ defparam \clock_divider|out .sum_lutc_input = "datac";
 defparam \clock_divider|out .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N0
+// Location: LC_X6_Y3_N1
+maxii_lcell \matrix|count[0] (
+// Equation(s):
+// \matrix|count [0] = DFFEAS((!\matrix|count [2] & (((!\matrix|count [0])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\matrix|count [2]),
+	.datab(vcc),
+	.datac(\matrix|count [0]),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\matrix|count [0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \matrix|count[0] .lut_mask = "0505";
+defparam \matrix|count[0] .operation_mode = "normal";
+defparam \matrix|count[0] .output_mode = "reg_only";
+defparam \matrix|count[0] .register_cascade_mode = "off";
+defparam \matrix|count[0] .sum_lutc_input = "datac";
+defparam \matrix|count[0] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X6_Y3_N2
+maxii_lcell \matrix|count[1] (
+// Equation(s):
+// \matrix|count [1] = DFFEAS((!\matrix|count [2] & ((\matrix|count [0] $ (\matrix|count [1])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\matrix|count [2]),
+	.datab(vcc),
+	.datac(\matrix|count [0]),
+	.datad(\matrix|count [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\matrix|count [1]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \matrix|count[1] .lut_mask = "0550";
+defparam \matrix|count[1] .operation_mode = "normal";
+defparam \matrix|count[1] .output_mode = "reg_only";
+defparam \matrix|count[1] .register_cascade_mode = "off";
+defparam \matrix|count[1] .sum_lutc_input = "datac";
+defparam \matrix|count[1] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X6_Y3_N3
 maxii_lcell \matrix|count[2] (
 // Equation(s):
 // \matrix|columns[0]~0  = (((!\matrix|count [0] & !\matrix|count [1])) # (!E1_count[2]))
@@ -1011,17 +1101,17 @@ defparam \matrix|count[2] .sum_lutc_input = "qfbk";
 defparam \matrix|count[2] .synch_mode = "on";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N6
+// Location: LC_X6_Y3_N6
 maxii_lcell \matrix|columns[3] (
 // Equation(s):
-// \matrix|Decoder0~0  = (\matrix|count [1] & (((\matrix|count [0] & !\matrix|count [2]))))
+// \matrix|Decoder0~0  = ((\matrix|count [0] & (!\matrix|count [2] & \matrix|count [1])))
 // \matrix|columns [3] = DFFEAS(\matrix|Decoder0~0 , GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
 
 	.clk(\clock_divider|out~regout ),
-	.dataa(\matrix|count [1]),
-	.datab(vcc),
-	.datac(\matrix|count [0]),
-	.datad(\matrix|count [2]),
+	.dataa(vcc),
+	.datab(\matrix|count [0]),
+	.datac(\matrix|count [2]),
+	.datad(\matrix|count [1]),
 	.aclr(gnd),
 	.aload(gnd),
 	.sclr(gnd),
@@ -1040,7 +1130,7 @@ maxii_lcell \matrix|columns[3] (
 	.cout0(),
 	.cout1());
 // synopsys translate_off
-defparam \matrix|columns[3] .lut_mask = "00a0";
+defparam \matrix|columns[3] .lut_mask = "0c00";
 defparam \matrix|columns[3] .operation_mode = "normal";
 defparam \matrix|columns[3] .output_mode = "reg_and_comb";
 defparam \matrix|columns[3] .register_cascade_mode = "off";
@@ -1048,88 +1138,16 @@ defparam \matrix|columns[3] .sum_lutc_input = "datac";
 defparam \matrix|columns[3] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N9
-maxii_lcell \matrix|count[0] (
-// Equation(s):
-// \matrix|count [0] = DFFEAS(((!\matrix|count [0] & ((!\matrix|count [2])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
-
-	.clk(\clock_divider|out~regout ),
-	.dataa(vcc),
-	.datab(\matrix|count [0]),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
-	.aclr(gnd),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(vcc),
-	.cin(gnd),
-	.cin0(gnd),
-	.cin1(vcc),
-	.inverta(gnd),
-	.regcascin(gnd),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.combout(),
-	.regout(\matrix|count [0]),
-	.cout(),
-	.cout0(),
-	.cout1());
-// synopsys translate_off
-defparam \matrix|count[0] .lut_mask = "0033";
-defparam \matrix|count[0] .operation_mode = "normal";
-defparam \matrix|count[0] .output_mode = "reg_only";
-defparam \matrix|count[0] .register_cascade_mode = "off";
-defparam \matrix|count[0] .sum_lutc_input = "datac";
-defparam \matrix|count[0] .synch_mode = "off";
-// synopsys translate_on
-
-// Location: LC_X7_Y1_N3
-maxii_lcell \matrix|count[1] (
-// Equation(s):
-// \matrix|count [1] = DFFEAS(((!\matrix|count [2] & (\matrix|count [1] $ (\matrix|count [0])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
-
-	.clk(\clock_divider|out~regout ),
-	.dataa(\matrix|count [1]),
-	.datab(\matrix|count [0]),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
-	.aclr(gnd),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(vcc),
-	.cin(gnd),
-	.cin0(gnd),
-	.cin1(vcc),
-	.inverta(gnd),
-	.regcascin(gnd),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.combout(),
-	.regout(\matrix|count [1]),
-	.cout(),
-	.cout0(),
-	.cout1());
-// synopsys translate_off
-defparam \matrix|count[1] .lut_mask = "0066";
-defparam \matrix|count[1] .operation_mode = "normal";
-defparam \matrix|count[1] .output_mode = "reg_only";
-defparam \matrix|count[1] .register_cascade_mode = "off";
-defparam \matrix|count[1] .sum_lutc_input = "datac";
-defparam \matrix|count[1] .synch_mode = "off";
-// synopsys translate_on
-
-// Location: LC_X7_Y1_N4
+// Location: LC_X6_Y3_N9
 maxii_lcell \matrix|columns[0] (
 // Equation(s):
-// \matrix|columns [0] = DFFEAS((!\matrix|count [1] & (!\matrix|count [0] & ((!\matrix|count [2])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
+// \matrix|columns [0] = DFFEAS((!\matrix|count [2] & (((!\matrix|count [0] & !\matrix|count [1])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
 
 	.clk(\clock_divider|out~regout ),
-	.dataa(\matrix|count [1]),
-	.datab(\matrix|count [0]),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
+	.dataa(\matrix|count [2]),
+	.datab(vcc),
+	.datac(\matrix|count [0]),
+	.datad(\matrix|count [1]),
 	.aclr(gnd),
 	.aload(gnd),
 	.sclr(gnd),
@@ -1148,7 +1166,7 @@ maxii_lcell \matrix|columns[0] (
 	.cout0(),
 	.cout1());
 // synopsys translate_off
-defparam \matrix|columns[0] .lut_mask = "0011";
+defparam \matrix|columns[0] .lut_mask = "0005";
 defparam \matrix|columns[0] .operation_mode = "normal";
 defparam \matrix|columns[0] .output_mode = "reg_only";
 defparam \matrix|columns[0] .register_cascade_mode = "off";
@@ -1156,16 +1174,16 @@ defparam \matrix|columns[0] .sum_lutc_input = "datac";
 defparam \matrix|columns[0] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N7
+// Location: LC_X6_Y3_N4
 maxii_lcell \matrix|columns[1] (
 // Equation(s):
-// \matrix|columns [1] = DFFEAS((!\matrix|count [1] & (\matrix|count [0] & ((!\matrix|count [2])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
+// \matrix|columns [1] = DFFEAS((!\matrix|count [2] & (((\matrix|count [0] & !\matrix|count [1])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
 
 	.clk(\clock_divider|out~regout ),
-	.dataa(\matrix|count [1]),
-	.datab(\matrix|count [0]),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
+	.dataa(\matrix|count [2]),
+	.datab(vcc),
+	.datac(\matrix|count [0]),
+	.datad(\matrix|count [1]),
 	.aclr(gnd),
 	.aload(gnd),
 	.sclr(gnd),
@@ -1184,7 +1202,7 @@ maxii_lcell \matrix|columns[1] (
 	.cout0(),
 	.cout1());
 // synopsys translate_off
-defparam \matrix|columns[1] .lut_mask = "0044";
+defparam \matrix|columns[1] .lut_mask = "0050";
 defparam \matrix|columns[1] .operation_mode = "normal";
 defparam \matrix|columns[1] .output_mode = "reg_only";
 defparam \matrix|columns[1] .register_cascade_mode = "off";
@@ -1192,16 +1210,16 @@ defparam \matrix|columns[1] .sum_lutc_input = "datac";
 defparam \matrix|columns[1] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N2
+// Location: LC_X6_Y3_N7
 maxii_lcell \matrix|columns[2] (
 // Equation(s):
-// \matrix|columns [2] = DFFEAS((\matrix|count [1] & (!\matrix|count [0] & ((!\matrix|count [2])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
+// \matrix|columns [2] = DFFEAS((!\matrix|count [2] & (((!\matrix|count [0] & \matrix|count [1])))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
 
 	.clk(\clock_divider|out~regout ),
-	.dataa(\matrix|count [1]),
-	.datab(\matrix|count [0]),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
+	.dataa(\matrix|count [2]),
+	.datab(vcc),
+	.datac(\matrix|count [0]),
+	.datad(\matrix|count [1]),
 	.aclr(gnd),
 	.aload(gnd),
 	.sclr(gnd),
@@ -1220,7 +1238,7 @@ maxii_lcell \matrix|columns[2] (
 	.cout0(),
 	.cout1());
 // synopsys translate_off
-defparam \matrix|columns[2] .lut_mask = "0022";
+defparam \matrix|columns[2] .lut_mask = "0500";
 defparam \matrix|columns[2] .operation_mode = "normal";
 defparam \matrix|columns[2] .output_mode = "reg_only";
 defparam \matrix|columns[2] .register_cascade_mode = "off";
@@ -1228,20 +1246,20 @@ defparam \matrix|columns[2] .sum_lutc_input = "datac";
 defparam \matrix|columns[2] .synch_mode = "off";
 // synopsys translate_on
 
-// Location: LC_X7_Y1_N8
+// Location: LC_X6_Y3_N5
 maxii_lcell \matrix|columns[4] (
 // Equation(s):
-// \matrix|columns [4] = DFFEAS((((\matrix|count [2]))), GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , , , , )
+// \matrix|columns [4] = DFFEAS(GND, GLOBAL(\clock_divider|out~regout ), VCC, , \matrix|columns[0]~0 , \matrix|count [2], , , VCC)
 
 	.clk(\clock_divider|out~regout ),
 	.dataa(vcc),
 	.datab(vcc),
-	.datac(vcc),
-	.datad(\matrix|count [2]),
+	.datac(\matrix|count [2]),
+	.datad(vcc),
 	.aclr(gnd),
 	.aload(gnd),
 	.sclr(gnd),
-	.sload(gnd),
+	.sload(vcc),
 	.ena(\matrix|columns[0]~0 ),
 	.cin(gnd),
 	.cin0(gnd),
@@ -1256,15 +1274,551 @@ maxii_lcell \matrix|columns[4] (
 	.cout0(),
 	.cout1());
 // synopsys translate_off
-defparam \matrix|columns[4] .lut_mask = "ff00";
+defparam \matrix|columns[4] .lut_mask = "0000";
 defparam \matrix|columns[4] .operation_mode = "normal";
 defparam \matrix|columns[4] .output_mode = "reg_only";
 defparam \matrix|columns[4] .register_cascade_mode = "off";
 defparam \matrix|columns[4] .sum_lutc_input = "datac";
-defparam \matrix|columns[4] .synch_mode = "off";
+defparam \matrix|columns[4] .synch_mode = "on";
 // synopsys translate_on
 
-// Location: PIN_64,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxii_io \change_game_button~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\change_game_button~combout ),
+	.padio(change_game_button));
+// synopsys translate_off
+defparam \change_game_button~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: LC_X2_Y3_N9
+maxii_lcell \btn_change_game|state[1] (
+// Equation(s):
+// \btn_change_game|state [1] = DFFEAS((\change_game_button~combout  & (((\btn_change_game|state [0]) # (\btn_change_game|state [1])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\change_game_button~combout ),
+	.datab(vcc),
+	.datac(\btn_change_game|state [0]),
+	.datad(\btn_change_game|state [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\btn_change_game|state [1]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \btn_change_game|state[1] .lut_mask = "aaa0";
+defparam \btn_change_game|state[1] .operation_mode = "normal";
+defparam \btn_change_game|state[1] .output_mode = "reg_only";
+defparam \btn_change_game|state[1] .register_cascade_mode = "off";
+defparam \btn_change_game|state[1] .sum_lutc_input = "datac";
+defparam \btn_change_game|state[1] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y3_N5
+maxii_lcell \btn_change_game|state[0] (
+// Equation(s):
+// \btn_change_game|state [0] = DFFEAS((\change_game_button~combout  & (((\btn_change_game|state [1]) # (!\btn_change_game|state [0])))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\change_game_button~combout ),
+	.datab(vcc),
+	.datac(\btn_change_game|state [0]),
+	.datad(\btn_change_game|state [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\btn_change_game|state [0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \btn_change_game|state[0] .lut_mask = "aa0a";
+defparam \btn_change_game|state[0] .operation_mode = "normal";
+defparam \btn_change_game|state[0] .output_mode = "reg_only";
+defparam \btn_change_game|state[0] .register_cascade_mode = "off";
+defparam \btn_change_game|state[0] .sum_lutc_input = "datac";
+defparam \btn_change_game|state[0] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y3_N4
+maxii_lcell \btn_change_game|debouncer (
+// Equation(s):
+// \btn_change_game|debouncer~regout  = DFFEAS((\btn_change_game|debouncer~regout  & ((\change_game_button~combout ) # ((!\btn_change_game|state [1]) # (!\btn_change_game|state [0])))) # (!\btn_change_game|debouncer~regout  & (\change_game_button~combout  & 
+// (!\btn_change_game|state [0] & \btn_change_game|state [1]))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\btn_change_game|debouncer~regout ),
+	.datab(\change_game_button~combout ),
+	.datac(\btn_change_game|state [0]),
+	.datad(\btn_change_game|state [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\btn_change_game|debouncer~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \btn_change_game|debouncer .lut_mask = "8eaa";
+defparam \btn_change_game|debouncer .operation_mode = "normal";
+defparam \btn_change_game|debouncer .output_mode = "reg_only";
+defparam \btn_change_game|debouncer .register_cascade_mode = "off";
+defparam \btn_change_game|debouncer .sum_lutc_input = "datac";
+defparam \btn_change_game|debouncer .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N1
+maxii_lcell \change_game_option|game_reg.0010 (
+// Equation(s):
+// \change_game_option|game_reg.0010~regout  = DFFEAS((((\change_game_option|game_reg.0001~regout ))), GLOBAL(\btn_change_game|debouncer~regout ), VCC, , , , , , )
+
+	.clk(\btn_change_game|debouncer~regout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\change_game_option|game_reg.0001~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\change_game_option|game_reg.0010~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \change_game_option|game_reg.0010 .lut_mask = "ff00";
+defparam \change_game_option|game_reg.0010 .operation_mode = "normal";
+defparam \change_game_option|game_reg.0010 .output_mode = "reg_only";
+defparam \change_game_option|game_reg.0010 .register_cascade_mode = "off";
+defparam \change_game_option|game_reg.0010 .sum_lutc_input = "datac";
+defparam \change_game_option|game_reg.0010 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N0
+maxii_lcell \change_game_option|game_reg.0100 (
+// Equation(s):
+// \change_game_option|game_reg.0100~regout  = DFFEAS(GND, GLOBAL(\btn_change_game|debouncer~regout ), VCC, , , \change_game_option|game_reg.0010~regout , , , VCC)
+
+	.clk(\btn_change_game|debouncer~regout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\change_game_option|game_reg.0010~regout ),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\change_game_option|game_reg.0100~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \change_game_option|game_reg.0100 .lut_mask = "0000";
+defparam \change_game_option|game_reg.0100 .operation_mode = "normal";
+defparam \change_game_option|game_reg.0100 .output_mode = "reg_only";
+defparam \change_game_option|game_reg.0100 .register_cascade_mode = "off";
+defparam \change_game_option|game_reg.0100 .sum_lutc_input = "datac";
+defparam \change_game_option|game_reg.0100 .synch_mode = "on";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N7
+maxii_lcell \change_game_option|game_reg.1000 (
+// Equation(s):
+// \change_game_option|game_reg.1000~regout  = DFFEAS(GND, GLOBAL(\btn_change_game|debouncer~regout ), VCC, , , \change_game_option|game_reg.0100~regout , , , VCC)
+
+	.clk(\btn_change_game|debouncer~regout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\change_game_option|game_reg.0100~regout ),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\change_game_option|game_reg.1000~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \change_game_option|game_reg.1000 .lut_mask = "0000";
+defparam \change_game_option|game_reg.1000 .operation_mode = "normal";
+defparam \change_game_option|game_reg.1000 .output_mode = "reg_only";
+defparam \change_game_option|game_reg.1000 .register_cascade_mode = "off";
+defparam \change_game_option|game_reg.1000 .sum_lutc_input = "datac";
+defparam \change_game_option|game_reg.1000 .synch_mode = "on";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N8
+maxii_lcell \change_game_option|game_reg.0000 (
+// Equation(s):
+// \change_game_option|game_reg.0000~regout  = DFFEAS(VCC, GLOBAL(\btn_change_game|debouncer~regout ), VCC, , , , , , )
+
+	.clk(\btn_change_game|debouncer~regout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\change_game_option|game_reg.0000~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \change_game_option|game_reg.0000 .lut_mask = "ffff";
+defparam \change_game_option|game_reg.0000 .operation_mode = "normal";
+defparam \change_game_option|game_reg.0000 .output_mode = "reg_only";
+defparam \change_game_option|game_reg.0000 .register_cascade_mode = "off";
+defparam \change_game_option|game_reg.0000 .sum_lutc_input = "datac";
+defparam \change_game_option|game_reg.0000 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N9
+maxii_lcell \change_game_option|game_reg.0001 (
+// Equation(s):
+// \change_game_option|game_reg.0001~regout  = DFFEAS((((\change_game_option|game_reg.1000~regout ) # (!\change_game_option|game_reg.0000~regout ))), GLOBAL(\btn_change_game|debouncer~regout ), VCC, , , , , , )
+
+	.clk(\btn_change_game|debouncer~regout ),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\change_game_option|game_reg.1000~regout ),
+	.datad(\change_game_option|game_reg.0000~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\change_game_option|game_reg.0001~regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \change_game_option|game_reg.0001 .lut_mask = "f0ff";
+defparam \change_game_option|game_reg.0001 .operation_mode = "normal";
+defparam \change_game_option|game_reg.0001 .output_mode = "reg_only";
+defparam \change_game_option|game_reg.0001 .register_cascade_mode = "off";
+defparam \change_game_option|game_reg.0001 .sum_lutc_input = "datac";
+defparam \change_game_option|game_reg.0001 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: PIN_69,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxii_io \select_game_button~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\select_game_button~combout ),
+	.padio(select_game_button));
+// synopsys translate_off
+defparam \select_game_button~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_68,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxii_io \reset_save_game_button~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\reset_save_game_button~combout ),
+	.padio(reset_save_game_button));
+// synopsys translate_off
+defparam \reset_save_game_button~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N6
+maxii_lcell \select_game_option|game_selected~1 (
+// Equation(s):
+// \select_game_option|game_selected~1_combout  = (((\select_game_button~combout ) # (\reset_save_game_button~combout )))
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\select_game_button~combout ),
+	.datad(\reset_save_game_button~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\select_game_option|game_selected~1_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \select_game_option|game_selected~1 .lut_mask = "fff0";
+defparam \select_game_option|game_selected~1 .operation_mode = "normal";
+defparam \select_game_option|game_selected~1 .output_mode = "comb_only";
+defparam \select_game_option|game_selected~1 .register_cascade_mode = "off";
+defparam \select_game_option|game_selected~1 .sum_lutc_input = "datac";
+defparam \select_game_option|game_selected~1 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N2
+maxii_lcell \select_game_option|game_selected~0 (
+// Equation(s):
+// \select_game_option|game_selected~0_combout  = (((\select_game_option|game_selected~combout ) # (!\select_game_button~combout )))
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\select_game_button~combout ),
+	.datad(\select_game_option|game_selected~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\select_game_option|game_selected~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \select_game_option|game_selected~0 .lut_mask = "ff0f";
+defparam \select_game_option|game_selected~0 .operation_mode = "normal";
+defparam \select_game_option|game_selected~0 .output_mode = "comb_only";
+defparam \select_game_option|game_selected~0 .register_cascade_mode = "off";
+defparam \select_game_option|game_selected~0 .sum_lutc_input = "datac";
+defparam \select_game_option|game_selected~0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N3
+maxii_lcell \select_game_option|game_selected (
+// Equation(s):
+// \select_game_option|game_selected~combout  = ((\select_game_option|game_selected~1_combout  & ((!\select_game_option|game_selected~0_combout ))) # (!\select_game_option|game_selected~1_combout  & (\select_game_option|game_selected~combout )))
+
+	.clk(gnd),
+	.dataa(\select_game_option|game_selected~combout ),
+	.datab(vcc),
+	.datac(\select_game_option|game_selected~1_combout ),
+	.datad(\select_game_option|game_selected~0_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\select_game_option|game_selected~combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \select_game_option|game_selected .lut_mask = "0afa";
+defparam \select_game_option|game_selected .operation_mode = "normal";
+defparam \select_game_option|game_selected .output_mode = "comb_only";
+defparam \select_game_option|game_selected .register_cascade_mode = "off";
+defparam \select_game_option|game_selected .sum_lutc_input = "datac";
+defparam \select_game_option|game_selected .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N5
+maxii_lcell \select_game_option|col1[6]~0 (
+// Equation(s):
+// \select_game_option|col1[6]~0_combout  = (((!\select_game_button~combout  & \reset_save_game_button~combout )))
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\select_game_button~combout ),
+	.datad(\reset_save_game_button~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\select_game_option|col1[6]~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \select_game_option|col1[6]~0 .lut_mask = "0f00";
+defparam \select_game_option|col1[6]~0 .operation_mode = "normal";
+defparam \select_game_option|col1[6]~0 .output_mode = "comb_only";
+defparam \select_game_option|col1[6]~0 .register_cascade_mode = "off";
+defparam \select_game_option|col1[6]~0 .sum_lutc_input = "datac";
+defparam \select_game_option|col1[6]~0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X7_Y3_N4
+maxii_lcell \select_game_option|col2[0] (
+// Equation(s):
+// \select_game_option|col2 [0] = DFFEAS((\select_game_button~combout  & (((\select_game_option|col2 [0])))) # (!\select_game_button~combout  & ((\select_game_option|game_selected~combout  & ((\select_game_option|col2 [0]))) # 
+// (!\select_game_option|game_selected~combout  & (\change_game_option|game_reg.0001~regout )))), \change_game_option|game_reg.0001~regout , !\select_game_option|col1[6]~0_combout , , , , , , )
+
+	.clk(\change_game_option|game_reg.0001~regout ),
+	.dataa(\select_game_button~combout ),
+	.datab(\change_game_option|game_reg.0001~regout ),
+	.datac(\select_game_option|col2 [0]),
+	.datad(\select_game_option|game_selected~combout ),
+	.aclr(\select_game_option|col1[6]~0_combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\select_game_option|col2 [0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \select_game_option|col2[0] .lut_mask = "f0e4";
+defparam \select_game_option|col2[0] .operation_mode = "normal";
+defparam \select_game_option|col2[0] .output_mode = "reg_only";
+defparam \select_game_option|col2[0] .register_cascade_mode = "off";
+defparam \select_game_option|col2[0] .sum_lutc_input = "datac";
+defparam \select_game_option|col2[0] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X6_Y3_N8
+maxii_lcell \matrix|lines[0] (
+// Equation(s):
+// \matrix|lines [0] = DFFEAS((\select_game_option|col2 [0] & (\matrix|count [2] $ (((\matrix|count [0]) # (\matrix|count [1]))))), GLOBAL(\clock_divider|out~regout ), VCC, , , , , , )
+
+	.clk(\clock_divider|out~regout ),
+	.dataa(\matrix|count [2]),
+	.datab(\select_game_option|col2 [0]),
+	.datac(\matrix|count [0]),
+	.datad(\matrix|count [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\matrix|lines [0]),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \matrix|lines[0] .lut_mask = "4448";
+defparam \matrix|lines[0] .operation_mode = "normal";
+defparam \matrix|lines[0] .output_mode = "reg_only";
+defparam \matrix|lines[0] .register_cascade_mode = "off";
+defparam \matrix|lines[0] .sum_lutc_input = "datac";
+defparam \matrix|lines[0] .synch_mode = "off";
+// synopsys translate_on
+
+// Location: PIN_89,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \status[0]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1274,7 +1828,7 @@ maxii_io \status[0]~I (
 defparam \status[0]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_57,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_100,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \status[1]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1284,7 +1838,7 @@ maxii_io \status[1]~I (
 defparam \status[1]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_33,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_95,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \columns_attack[0]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1294,7 +1848,7 @@ maxii_io \columns_attack[0]~I (
 defparam \columns_attack[0]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_86,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \columns_attack[1]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1304,7 +1858,7 @@ maxii_io \columns_attack[1]~I (
 defparam \columns_attack[1]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_27,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \columns_attack[2]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1314,7 +1868,7 @@ maxii_io \columns_attack[2]~I (
 defparam \columns_attack[2]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_61,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_58,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \rows_attack[0]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1324,7 +1878,7 @@ maxii_io \rows_attack[0]~I (
 defparam \rows_attack[0]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_92,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_91,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \rows_attack[1]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1334,7 +1888,7 @@ maxii_io \rows_attack[1]~I (
 defparam \rows_attack[1]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_83,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_42,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \rows_attack[2]~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1344,7 +1898,7 @@ maxii_io \rows_attack[2]~I (
 defparam \rows_attack[2]~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_84,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_73,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \attack_button~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1354,7 +1908,7 @@ maxii_io \attack_button~I (
 defparam \attack_button~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_91,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Location: PIN_34,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 maxii_io \save_game_button~I (
 	.datain(gnd),
 	.oe(gnd),
@@ -1364,17 +1918,7 @@ maxii_io \save_game_button~I (
 defparam \save_game_button~I .operation_mode = "input";
 // synopsys translate_on
 
-// Location: PIN_95,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
-maxii_io \reset_save_game_button~I (
-	.datain(gnd),
-	.oe(gnd),
-	.combout(),
-	.padio(reset_save_game_button));
-// synopsys translate_off
-defparam \reset_save_game_button~I .operation_mode = "input";
-// synopsys translate_on
-
-// Location: PIN_54,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_64,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \columns[0]~I (
 	.datain(\matrix|columns [0]),
 	.oe(vcc),
@@ -1384,7 +1928,7 @@ maxii_io \columns[0]~I (
 defparam \columns[0]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_55,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_67,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \columns[1]~I (
 	.datain(\matrix|columns [1]),
 	.oe(vcc),
@@ -1394,7 +1938,7 @@ maxii_io \columns[1]~I (
 defparam \columns[1]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_56,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_81,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \columns[2]~I (
 	.datain(\matrix|columns [2]),
 	.oe(vcc),
@@ -1404,7 +1948,7 @@ maxii_io \columns[2]~I (
 defparam \columns[2]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_53,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_66,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \columns[3]~I (
 	.datain(\matrix|columns [3]),
 	.oe(vcc),
@@ -1414,7 +1958,7 @@ maxii_io \columns[3]~I (
 defparam \columns[3]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_52,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_82,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \columns[4]~I (
 	.datain(\matrix|columns [4]),
 	.oe(vcc),
@@ -1424,9 +1968,9 @@ maxii_io \columns[4]~I (
 defparam \columns[4]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_70,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_83,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[0]~I (
-	.datain(gnd),
+	.datain(\matrix|lines [0]),
 	.oe(vcc),
 	.combout(),
 	.padio(lines[0]));
@@ -1434,7 +1978,7 @@ maxii_io \lines[0]~I (
 defparam \lines[0]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_43,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_92,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[1]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1444,7 +1988,7 @@ maxii_io \lines[1]~I (
 defparam \lines[1]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_26,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[2]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1454,7 +1998,7 @@ maxii_io \lines[2]~I (
 defparam \lines[2]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_20,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[3]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1464,7 +2008,7 @@ maxii_io \lines[3]~I (
 defparam \lines[3]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_29,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_51,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[4]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1474,7 +2018,7 @@ maxii_io \lines[4]~I (
 defparam \lines[4]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_98,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[5]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1484,7 +2028,7 @@ maxii_io \lines[5]~I (
 defparam \lines[5]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_51,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_97,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \lines[6]~I (
 	.datain(gnd),
 	.oe(vcc),
@@ -1494,7 +2038,7 @@ maxii_io \lines[6]~I (
 defparam \lines[6]~I .operation_mode = "output";
 // synopsys translate_on
 
-// Location: PIN_6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Location: PIN_7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
 maxii_io \clock_output~I (
 	.datain(\clock_divider|out~regout ),
 	.oe(vcc),
@@ -1502,16 +2046,6 @@ maxii_io \clock_output~I (
 	.padio(clock_output));
 // synopsys translate_off
 defparam \clock_output~I .operation_mode = "output";
-// synopsys translate_on
-
-// Location: PIN_3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
-maxii_io \game_charge_button~I (
-	.datain(gnd),
-	.oe(gnd),
-	.combout(),
-	.padio(game_charge_button));
-// synopsys translate_off
-defparam \game_charge_button~I .operation_mode = "input";
 // synopsys translate_on
 
 endmodule

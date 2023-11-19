@@ -1,5 +1,5 @@
 
-State Machine - |main_module|game_select:select_game|game_reg
+State Machine - |main_module|game_option_change:change_game_option|game_reg
 Name game_reg.0000 game_reg.1000 game_reg.0100 game_reg.0010 game_reg.0001 
 game_reg.0000 0 0 0 0 0 
 game_reg.0001 1 0 0 0 1 

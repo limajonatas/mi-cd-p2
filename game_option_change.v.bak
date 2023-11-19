@@ -1,4 +1,6 @@
-module game_select(
+
+/*ALTERNA ENTRE AS OPÇÕES DOS JOGOS*/
+module game_option_change(
     output [3:0] game,
     input game_charge
 );

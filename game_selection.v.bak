@@ -1,4 +1,5 @@
-module game_register(
+/*MÓDULO RESPONSÁVEL POR SELECIONAR O JOGO PREDEFINIDO*/
+module game_selection(
 	input register_game,
 	input reset,
 	input [3:0] game_selected,
@@ -15,7 +16,7 @@ module game_register(
 	reg [6:0] col4 = 7'b00000000;
 	reg [6:0] col5 = 7'b00000000;
 
-	/*O register e reset são acionados apenas e o status do 
+	/*O register e reset são acionados apenas se o status do 
 	jogo estiver no modo posicionamento controlador principal*/
 	always @(posedge register_game or posedge reset) begin
 		if(register_game)

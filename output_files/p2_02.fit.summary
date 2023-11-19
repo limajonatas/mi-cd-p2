@@ -1,11 +1,11 @@
-Fitter Status : Successful - Sat Oct 21 15:09:24 2023
+Fitter Status : Successful - Sun Nov 19 00:12:15 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : p2_02
 Top-level Entity Name : main_module
 Family : MAX II
 Device : EPM240T100C5
 Timing Models : Final
-Total logic elements : 30 / 240 ( 13 % )
-Total pins : 26 / 80 ( 33 % )
+Total logic elements : 44 / 240 ( 18 % )
+Total pins : 27 / 80 ( 34 % )
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

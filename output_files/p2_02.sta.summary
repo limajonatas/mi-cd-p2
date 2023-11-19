@@ -3,26 +3,70 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'clock'
-Slack : -4.407
-TNS   : -59.364
+Slack : -4.280
+TNS   : -59.237
 
 Type  : Setup 'clk:clock_divider|out'
-Slack : -3.251
-TNS   : -23.516
+Slack : -3.322
+TNS   : -31.206
 
-Type  : Hold 'clock'
-Slack : -1.104
-TNS   : -1.104
+Type  : Setup 'game_option_change:change_game_option|game_reg.0001'
+Slack : -2.849
+TNS   : -2.849
+
+Type  : Setup 'reset_save_game_button'
+Slack : -2.589
+TNS   : -2.589
+
+Type  : Setup 'debouncer_button:btn_change_game|debouncer'
+Slack : -1.465
+TNS   : -3.734
 
 Type  : Hold 'clk:clock_divider|out'
-Slack : 2.238
+Slack : -2.944
+TNS   : -3.451
+
+Type  : Hold 'debouncer_button:btn_change_game|debouncer'
+Slack : -2.359
+TNS   : -2.359
+
+Type  : Hold 'clock'
+Slack : -1.511
+TNS   : -1.511
+
+Type  : Hold 'game_option_change:change_game_option|game_reg.0001'
+Slack : -0.031
+TNS   : -0.031
+
+Type  : Hold 'reset_save_game_button'
+Slack : 1.445
+TNS   : 0.000
+
+Type  : Recovery 'game_option_change:change_game_option|game_reg.0001'
+Slack : -3.293
+TNS   : -3.293
+
+Type  : Removal 'game_option_change:change_game_option|game_reg.0001'
+Slack : 3.239
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'clock'
 Slack : -2.289
 TNS   : -2.289
 
+Type  : Minimum Pulse Width 'reset_save_game_button'
+Slack : -2.289
+TNS   : -2.289
+
 Type  : Minimum Pulse Width 'clk:clock_divider|out'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'debouncer_button:btn_change_game|debouncer'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'game_option_change:change_game_option|game_reg.0001'
 Slack : 0.234
 TNS   : 0.000
 
