@@ -1,5 +1,5 @@
 Analysis & Synthesis report for p2_02
-Sun Nov 19 00:12:13 2023
+Sat Nov 25 18:34:22 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -13,18 +13,15 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |main_module|game_option_change:change_game_option|game_reg
-  9. User-Specified and Inferred Latches
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Port Connectivity Checks: "matriz_controller:matrix"
- 15. Port Connectivity Checks: "game_selection:select_game_option"
- 16. Port Connectivity Checks: "game_option_change:change_game_option"
- 17. Port Connectivity Checks: "debouncer_button:btn_save_game"
- 18. Port Connectivity Checks: "debouncer_button:btn_reset_save_game"
- 19. Analysis & Synthesis Messages
+  8. State Machine - |main_module|game_option_change:change_game|game_reg
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "matriz_controller:matrix"
+ 13. Port Connectivity Checks: "main_controller:controller"
+ 14. Port Connectivity Checks: "game_selection:select_game_option"
+ 15. Port Connectivity Checks: "game_option_change:change_game"
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -51,13 +48,13 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +-----------------------------+------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sun Nov 19 00:12:13 2023          ;
+; Analysis & Synthesis Status ; Successful - Sat Nov 25 18:34:22 2023          ;
 ; Quartus Prime Version       ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name               ; p2_02                                          ;
 ; Top-level Entity Name       ; main_module                                    ;
 ; Family                      ; MAX II                                         ;
-; Total logic elements        ; 46                                             ;
-; Total pins                  ; 27                                             ;
+; Total logic elements        ; 0                                              ;
+; Total pins                  ; 13                                             ;
 ; Total virtual pins          ; 0                                              ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                  ;
 +-----------------------------+------------------------------------------------+
@@ -161,6 +158,7 @@ https://fpgasoftware.intel.com/eula.
 ; debouncer_button.v               ; yes             ; User Verilog HDL File  ; D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/debouncer_button.v   ;         ;
 ; game_selection.v                 ; yes             ; User Verilog HDL File  ; D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v     ;         ;
 ; game_option_change.v             ; yes             ; User Verilog HDL File  ; D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_option_change.v ;         ;
+; main_controller.v                ; yes             ; User Verilog HDL File  ; D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v    ;         ;
 +----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+---------+
 
 
@@ -169,54 +167,44 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 46    ;
-;     -- Combinational with no register       ; 11    ;
-;     -- Register only                        ; 6     ;
-;     -- Combinational with a register        ; 29    ;
+; Total logic elements                        ; 0     ;
+;     -- Combinational with no register       ; 0     ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 0     ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 8     ;
-;     -- 3 input functions                    ; 9     ;
-;     -- 2 input functions                    ; 21    ;
-;     -- 1 input functions                    ; 1     ;
-;     -- 0 input functions                    ; 1     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- 2 input functions                    ; 0     ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 31    ;
-;     -- arithmetic mode                      ; 15    ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 1     ;
+;     -- asynchronous clear/load mode         ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 35    ;
-; Total logic cells in carry chains           ; 16    ;
-; I/O pins                                    ; 27    ;
-; Maximum fan-out node                        ; clock ;
-; Maximum fan-out                             ; 17    ;
-; Total fan-out                               ; 155   ;
-; Average fan-out                             ; 2.12  ;
+; Total registers                             ; 0     ;
+; I/O pins                                    ; 13    ;
 +---------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                      ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------+--------------------+--------------+
-; Compilation Hierarchy Node                 ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                ; Entity Name        ; Library Name ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------+--------------------+--------------+
-; |main_module                               ; 46 (0)      ; 35           ; 0          ; 27   ; 0            ; 11 (0)       ; 6 (0)             ; 29 (0)           ; 16 (0)          ; 0 (0)      ; |main_module                                       ; main_module        ; work         ;
-;    |clk:clock_divider|                     ; 22 (22)     ; 17           ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 17 (17)          ; 16 (16)         ; 0 (0)      ; |main_module|clk:clock_divider                     ; clk                ; work         ;
-;    |debouncer_button:btn_change_game|      ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |main_module|debouncer_button:btn_change_game      ; debouncer_button   ; work         ;
-;    |game_option_change:change_game_option| ; 5 (5)       ; 5            ; 0          ; 0    ; 0            ; 0 (0)        ; 3 (3)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |main_module|game_option_change:change_game_option ; game_option_change ; work         ;
-;    |game_selection:select_game_option|     ; 5 (5)       ; 1            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |main_module|game_selection:select_game_option     ; game_selection     ; work         ;
-;    |matriz_controller:matrix|              ; 11 (11)     ; 9            ; 0          ; 0    ; 0            ; 2 (2)        ; 3 (3)             ; 6 (6)            ; 0 (0)           ; 0 (0)      ; |main_module|matriz_controller:matrix              ; matriz_controller  ; work         ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------+--------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; |main_module               ; 0 (0)       ; 0            ; 0          ; 13   ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |main_module        ; main_module ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------------------+
-; State Machine - |main_module|game_option_change:change_game_option|game_reg                   ;
+; State Machine - |main_module|game_option_change:change_game|game_reg                          ;
 +---------------+---------------+---------------+---------------+---------------+---------------+
 ; Name          ; game_reg.0000 ; game_reg.1000 ; game_reg.0100 ; game_reg.0010 ; game_reg.0001 ;
 +---------------+---------------+---------------+---------------+---------------+---------------+
@@ -228,42 +216,37 @@ Encoding Type:  One-Hot
 +---------------+---------------+---------------+---------------+---------------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                           ;
-+----------------------------------------------------+-------------------------------------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal                             ; Free of Timing Hazards ;
-+----------------------------------------------------+-------------------------------------------------+------------------------+
-; game_selection:select_game_option|game_selected    ; game_selection:select_game_option|game_selected ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                                                 ;                        ;
-+----------------------------------------------------+-------------------------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++----------------------------------------------+---------------------------------------------+
+; Register name                                ; Reason for Removal                          ;
++----------------------------------------------+---------------------------------------------+
+; debouncer_button:btn_change_game|state[2]    ; Stuck at GND due to stuck port clock_enable ;
+; debouncer_button:btn_change_game|debouncer   ; Lost fanout                                 ;
+; debouncer_button:btn_change_game|state[0,1]  ; Lost fanout                                 ;
+; clk:clock_divider|out                        ; Lost fanout                                 ;
+; clk:clock_divider|count[0..15]               ; Lost fanout                                 ;
+; game_option_change:change_game|game_reg.0001 ; Lost fanout                                 ;
+; game_option_change:change_game|game_reg.0010 ; Lost fanout                                 ;
+; game_option_change:change_game|game_reg.0100 ; Lost fanout                                 ;
+; game_option_change:change_game|game_reg.1000 ; Lost fanout                                 ;
+; game_option_change:change_game|game_reg.0000 ; Lost fanout                                 ;
+; Total Number of Removed Registers = 26       ;                                             ;
++----------------------------------------------+---------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                ;
-+-------------------------------------------+-------------------------------------------------------+
-; Register name                             ; Reason for Removal                                    ;
-+-------------------------------------------+-------------------------------------------------------+
-; matriz_controller:matrix|count[3]         ; Stuck at GND due to stuck port data_in                ;
-; game_selection:select_game_option|col1[0] ; Stuck at GND due to stuck port data_in                ;
-; game_selection:select_game_option|col3[0] ; Merged with game_selection:select_game_option|col2[0] ;
-; game_selection:select_game_option|col4[0] ; Merged with game_selection:select_game_option|col2[0] ;
-; game_selection:select_game_option|col5[0] ; Merged with game_selection:select_game_option|col2[0] ;
-; matriz_controller:matrix|lines[1..6]      ; Stuck at GND due to stuck port data_in                ;
-; debouncer_button:btn_change_game|state[2] ; Stuck at GND due to stuck port clock_enable           ;
-; Total Number of Removed Registers = 12    ;                                                       ;
-+-------------------------------------------+-------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                           ;
-+-----------------------------------+---------------------------+-----------------------------------------------------------------------+
-; Register name                     ; Reason for Removal        ; Registers Removed due to This Register                                ;
-+-----------------------------------+---------------------------+-----------------------------------------------------------------------+
-; matriz_controller:matrix|count[3] ; Stuck at GND              ; matriz_controller:matrix|lines[1], matriz_controller:matrix|lines[2], ;
-;                                   ; due to stuck port data_in ; matriz_controller:matrix|lines[3], matriz_controller:matrix|lines[4], ;
-;                                   ;                           ; matriz_controller:matrix|lines[5], matriz_controller:matrix|lines[6]  ;
-+-----------------------------------+---------------------------+-----------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                         ;
++--------------------------------------------+--------------------------------+---------------------------------------------------------------------------------------+
+; Register name                              ; Reason for Removal             ; Registers Removed due to This Register                                                ;
++--------------------------------------------+--------------------------------+---------------------------------------------------------------------------------------+
+; debouncer_button:btn_change_game|debouncer ; Lost Fanouts                   ; clk:clock_divider|out, clk:clock_divider|count[15], clk:clock_divider|count[14],      ;
+;                                            ;                                ; clk:clock_divider|count[13], clk:clock_divider|count[12],                             ;
+;                                            ;                                ; clk:clock_divider|count[11], clk:clock_divider|count[10], clk:clock_divider|count[9], ;
+;                                            ;                                ; clk:clock_divider|count[8], clk:clock_divider|count[7]                                ;
+; debouncer_button:btn_change_game|state[2]  ; Stuck at GND                   ; debouncer_button:btn_change_game|state[0],                                            ;
+;                                            ; due to stuck port clock_enable ; debouncer_button:btn_change_game|state[1]                                             ;
++--------------------------------------------+--------------------------------+---------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -271,43 +254,49 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 35    ;
+; Total registers                              ; 0     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 5     ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; 8:1                ; 5 bits    ; 25 LEs        ; 15 LEs               ; 10 LEs                 ; Yes        ; |main_module|matriz_controller:matrix|columns[0] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "matriz_controller:matrix"                                                                                                                       ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                      ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; col1    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col1[6..1]" will be connected to GND. ;
+; col2    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col2[6..1]" will be connected to GND. ;
+; col3    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col3[6..1]" will be connected to GND. ;
+; col4    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col4[6..1]" will be connected to GND. ;
+; col5    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col5[6..1]" will be connected to GND. ;
+; columns ; Output ; Warning  ; Output or bidir port (5 bits) is wider than the port expression (1 bits) it drives; bit(s) "columns[4..1]" have no fanouts                   ;
+; columns ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; lines   ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "lines[6..1]" have no fanouts                     ;
+; lines   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "matriz_controller:matrix"                                                                                                                      ;
-+---------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port    ; Type  ; Severity ; Details                                                                                                                                      ;
-+---------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; show[1] ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-; show[0] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
-; col1    ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col1[6..1]" will be connected to GND. ;
-; col2    ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col2[6..1]" will be connected to GND. ;
-; col3    ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col3[6..1]" will be connected to GND. ;
-; col4    ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col4[6..1]" will be connected to GND. ;
-; col5    ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col5[6..1]" will be connected to GND. ;
-; colHit1 ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-; colHit2 ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-; colHit3 ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-; colHit4 ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-; colHit5 ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
-+---------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "main_controller:controller"                                                                                                                         ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                         ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; col1_in  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col1_in[6..1]" will be connected to GND. ;
+; col2_in  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col2_in[6..1]" will be connected to GND. ;
+; col3_in  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col3_in[6..1]" will be connected to GND. ;
+; col4_in  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col4_in[6..1]" will be connected to GND. ;
+; col5_in  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (7 bits) it drives.  Extra input bit(s) "col5_in[6..1]" will be connected to GND. ;
+; col1_out ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "col1_out[6..1]" have no fanouts                     ;
+; col2_out ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "col2_out[6..1]" have no fanouts                     ;
+; col3_out ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "col3_out[6..1]" have no fanouts                     ;
+; col4_out ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "col4_out[6..1]" have no fanouts                     ;
+; col5_out ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "col5_out[6..1]" have no fanouts                     ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -325,30 +314,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "game_option_change:change_game_option"                                                                                                ;
+; Port Connectivity Checks: "game_option_change:change_game"                                                                                                       ;
 +-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
 ; Port        ; Type   ; Severity ; Details                                                                                                                        ;
 +-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
 ; game_option ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (1 bits) it drives; bit(s) "game_option[3..1]" have no fanouts ;
 +-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "debouncer_button:btn_save_game"                                                           ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; button_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "debouncer_button:btn_reset_save_game"                                                     ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; button_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -357,7 +328,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Nov 19 00:12:02 2023
+    Info: Processing started: Sat Nov 25 18:34:11 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off p2_02 -c p2_02
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -373,45 +344,53 @@ Info (12021): Found 1 design units, including 1 entities, in source file game_se
     Info (12023): Found entity 1: game_selection File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file game_option_change.v
     Info (12023): Found entity 1: game_option_change File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_option_change.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file main_controller.v
+    Info (12023): Found entity 1: main_controller File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at main_module.v(52): created implicit net for "game_selected_wire" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 52
+Warning (10236): Verilog HDL Implicit Net warning at main_module.v(94): created implicit net for "columns" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 94
+Warning (10236): Verilog HDL Implicit Net warning at main_module.v(95): created implicit net for "lines" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 95
 Info (12127): Elaborating entity "main_module" for the top level hierarchy
-Info (12128): Elaborating entity "clk" for hierarchy "clk:clock_divider" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 22
-Info (12128): Elaborating entity "debouncer_button" for hierarchy "debouncer_button:btn_change_game" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 29
-Info (12128): Elaborating entity "game_option_change" for hierarchy "game_option_change:change_game_option" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 49
-Info (12128): Elaborating entity "game_selection" for hierarchy "game_selection:select_game_option" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 61
-Warning (10646): Verilog HDL Event Control warning at game_selection.v(19): posedge or negedge of vector "game_selected_option" depends solely on its least-significant bit File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 19
-Info (10264): Verilog HDL Case Statement information at game_selection.v(33): all case item expressions in this case statement are onehot File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 33
-Warning (10240): Verilog HDL Always Construct warning at game_selection.v(19): inferring latch(es) for variable "game_selected", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 19
-Info (10041): Inferred latch for "game_selected" at game_selection.v(19) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 19
-Info (12128): Elaborating entity "matriz_controller" for hierarchy "matriz_controller:matrix" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 78
-Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch game_selection:select_game_option|game_selected has unsafe behavior File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 12
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal select_game_button File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 7
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "lines[1]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-    Warning (13410): Pin "lines[2]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-    Warning (13410): Pin "lines[3]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-    Warning (13410): Pin "lines[4]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-    Warning (13410): Pin "lines[5]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-    Warning (13410): Pin "lines[6]" is stuck at GND File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 12
-Warning (21074): Design contains 10 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "status[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 2
-    Warning (15610): No output dependent on input pin "status[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 2
-    Warning (15610): No output dependent on input pin "columns_attack[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 3
-    Warning (15610): No output dependent on input pin "columns_attack[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 3
-    Warning (15610): No output dependent on input pin "columns_attack[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 3
-    Warning (15610): No output dependent on input pin "rows_attack[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 4
-    Warning (15610): No output dependent on input pin "rows_attack[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 4
-    Warning (15610): No output dependent on input pin "rows_attack[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 4
-    Warning (15610): No output dependent on input pin "attack_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 5
-    Warning (15610): No output dependent on input pin "save_game_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 8
-Info (21057): Implemented 73 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 14 input pins
-    Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 46 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 4719 megabytes
-    Info: Processing ended: Sun Nov 19 00:12:13 2023
+Info (12128): Elaborating entity "clk" for hierarchy "clk:clock_divider" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 21
+Info (12128): Elaborating entity "debouncer_button" for hierarchy "debouncer_button:btn_change_game" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 28
+Info (12128): Elaborating entity "game_option_change" for hierarchy "game_option_change:change_game" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 54
+Info (12128): Elaborating entity "game_selection" for hierarchy "game_selection:select_game_option" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 64
+Warning (10036): Verilog HDL or VHDL warning at game_selection.v(10): object "game_selected" assigned a value but never read File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 10
+Warning (10646): Verilog HDL Event Control warning at game_selection.v(17): posedge or negedge of vector "game_selected_option" depends solely on its least-significant bit File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 17
+Info (10264): Verilog HDL Case Statement information at game_selection.v(18): all case item expressions in this case statement are onehot File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/game_selection.v Line: 18
+Info (12128): Elaborating entity "main_controller" for hierarchy "main_controller:controller" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 84
+Warning (10230): Verilog HDL assignment warning at main_controller.v(20): truncated value with size 2 to match size of target (1) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 20
+Warning (10230): Verilog HDL assignment warning at main_controller.v(24): truncated value with size 2 to match size of target (1) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 24
+Warning (10230): Verilog HDL assignment warning at main_controller.v(26): truncated value with size 2 to match size of target (1) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 26
+Warning (10230): Verilog HDL assignment warning at main_controller.v(28): truncated value with size 2 to match size of target (1) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 28
+Warning (10235): Verilog HDL Always Construct warning at main_controller.v(33): variable "col1_in" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 33
+Warning (10235): Verilog HDL Always Construct warning at main_controller.v(34): variable "col2_in" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 34
+Warning (10235): Verilog HDL Always Construct warning at main_controller.v(35): variable "col3_in" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 35
+Warning (10235): Verilog HDL Always Construct warning at main_controller.v(36): variable "col4_in" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 36
+Warning (10235): Verilog HDL Always Construct warning at main_controller.v(37): variable "col5_in" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_controller.v Line: 37
+Info (12128): Elaborating entity "matriz_controller" for hierarchy "matriz_controller:matrix" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 96
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (17049): 25 registers lost all their fanouts during netlist optimizations.
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "onOff" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 2
+    Warning (15610): No output dependent on input pin "status" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 3
+    Warning (15610): No output dependent on input pin "attack_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 4
+    Warning (15610): No output dependent on input pin "save_game_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 6
+    Warning (15610): No output dependent on input pin "reset_game_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 7
+    Warning (15610): No output dependent on input pin "columns_attack[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 9
+    Warning (15610): No output dependent on input pin "columns_attack[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 9
+    Warning (15610): No output dependent on input pin "columns_attack[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 9
+    Warning (15610): No output dependent on input pin "rows_attack[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 11
+    Warning (15610): No output dependent on input pin "rows_attack[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 11
+    Warning (15610): No output dependent on input pin "rows_attack[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 11
+    Warning (15610): No output dependent on input pin "change_game_button" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 5
+    Warning (15610): No output dependent on input pin "clock" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/main_module.v Line: 8
+Info (21057): Implemented 13 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 4711 megabytes
+    Info: Processing ended: Sat Nov 25 18:34:22 2023
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Total CPU time (on all processors): 00:00:12
 
 

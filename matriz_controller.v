@@ -1,6 +1,6 @@
 module matriz_controller(
     input clk,
-	 input [1:0] show, //exibe o tabuleiro ou os "pontos" de acerto 
+	 //input [1:0] show, //exibe o tabuleiro ou os "pontos" de acerto 
 	 /*colunas que pre-visualiza os jogos*/
 	 input [6:0] col1,
 	 input [6:0] col2,
@@ -8,11 +8,11 @@ module matriz_controller(
 	 input [6:0] col4,
 	 input [6:0] col5,
 	 /*colunas que visualiza pixel de acerto*/
-	 input [6:0] colHit1,
+	 /*input [6:0] colHit1,
 	 input [6:0] colHit2,
 	 input [6:0] colHit3,
 	 input [6:0] colHit4,
-	 input [6:0] colHit5,
+	 input [6:0] colHit5,*/
     output reg [4:0] columns,
     output reg [6:0] lines
 );
@@ -20,7 +20,7 @@ module matriz_controller(
     reg [3:0] count = 4'd0;
 
     always @(posedge clk) begin
-		if(show[0]) begin //EXIBE O TABULEIRO QUE O JOGADOR 1 DESEJA ESCOLHER 
+		//if(show[0]) begin //EXIBE O TABULEIRO QUE O JOGADOR 1 DESEJA ESCOLHER 
 			  case (count)
 					4'd0: begin //COLUNA 01
 						 columns <= 5'b00001;
@@ -57,7 +57,7 @@ module matriz_controller(
 						 lines <= 7'b0000000;
 					end
 			  endcase
-			end
+			/*end
 			else if(show[1]) begin //EXIBE NA MATRIZ OS PONTOS QUE O JOGADOR 2 ACERTOU O ALVO
 				case (count)
 					4'd0: begin //COLUNA 01
@@ -100,6 +100,7 @@ module matriz_controller(
 				count <= 4'd0;
 				lines <= 7'b0000000;
 			end
+			*/
     end
 
 endmodule

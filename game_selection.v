@@ -1,7 +1,5 @@
 /*MÓDULO RESPONSÁVEL POR SELECIONAR O JOGO*/
 module game_selection(
-    input reset,
-    input select_game,
     input [3:0] game_selected_option,
     output [6:0] col1_out,
     output [6:0] col2_out,
@@ -16,20 +14,7 @@ module game_selection(
     reg [6:0] col4 = 7'b0000000;
     reg [6:0] col5 = 7'b0000000;
 
-    always @(posedge select_game or posedge game_selected_option or posedge reset) begin
-        if(select_game) 
-            game_selected <= ~game_selected;
-				
-        else if(reset) begin
-            game_selected <= 1'b0;
-            col1 <= 7'b0000000;
-            col2 <= 7'b0000000;
-            col3 <= 7'b0000000;
-            col4 <= 7'b0000000;
-            col5 <= 7'b0000000;
-        end
-		  
-        else if(!game_selected) begin
+    always @(posedge game_selected_option) begin
             case (game_selected_option)
                 4'b0001: begin //JOGO 1
                     col1 <= 7'b0111100;
@@ -53,7 +38,6 @@ module game_selection(
                     col5 <= 7'b0000000;
                 end
             endcase
-        end
     end
 
     assign col1_out = col1;
