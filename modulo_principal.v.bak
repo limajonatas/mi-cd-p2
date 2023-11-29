@@ -1,0 +1,24 @@
+module modulo_principal(
+	input botao_mudar_jogo,
+	input clock,
+	output [4:0] colunas,
+   output [6:0] linhas
+);
+	wire clock_saida_381HZ, botao_mudar_jogo_saida;
+	
+	// divisor de clock
+    modulo_clock(
+        clock,
+        clock_saida_381HZ
+    );
+	 
+	//Debouncer para botão de mudar o jogo
+	tratar_botao botao_mudar_jogo(
+		.botao(botao_mudar_jogo),
+		.clock(clock_saida_381HZ),
+		.botao_saida(botao_mudar_jogo_saida)
+	);
+	
+ 
+
+endmodule

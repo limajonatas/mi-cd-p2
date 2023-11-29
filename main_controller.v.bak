@@ -1,4 +1,0 @@
-module main_controller(
-	input save_game,
-	input reset,
-	input status

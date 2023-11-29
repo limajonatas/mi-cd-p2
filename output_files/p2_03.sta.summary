@@ -1,0 +1,41 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clock'
+Slack : -4.288
+TNS   : -59.245
+
+Type  : Setup 'modulo_clock:comb_3|saida'
+Slack : -3.257
+TNS   : -31.078
+
+Type  : Setup 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
+Slack : -1.357
+TNS   : -2.571
+
+Type  : Hold 'modulo_clock:comb_3|saida'
+Slack : -2.058
+TNS   : -2.058
+
+Type  : Hold 'clock'
+Slack : -1.104
+TNS   : -1.104
+
+Type  : Hold 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
+Slack : 1.660
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clock'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'modulo_clock:comb_3|saida'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
+Slack : 0.234
+TNS   : 0.000
+
+------------------------------------------------------------

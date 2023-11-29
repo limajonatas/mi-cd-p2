@@ -1,0 +1,46 @@
+/*MÓDULO RESPONSÁVEL POR SELECIONAR O JOGO*/
+module mudar_jogo(
+    input botao,
+    output reg [6:0] coluna1,
+    output reg [6:0] coluna2,
+    output reg [6:0] coluna3,
+    output reg [6:0] coluna4,
+    output reg [6:0] coluna5
+);
+    reg jogo = 1'b0;
+	 initial begin
+		coluna1 = 7'b1111111;
+		coluna2 = 7'b1111111;
+		coluna3 = 7'b1111111;
+		coluna4 = 7'b1111111;
+		coluna5 = 7'b1111111;
+	end
+    always @(posedge botao) begin
+            case (jogo)
+                1'b0: begin //JOGO 1 
+                    coluna1 <= 7'b0111100;
+                    coluna2 <= 7'b0011101;
+                    coluna3 <= 7'b0110101;
+                    coluna4 <= 7'b1000111;
+                    coluna5 <= 7'b1110111;
+						  jogo <= 1'b1;
+                end
+                1'b1: begin //JOGO 2
+                    coluna1 <= 7'b0001101;
+                    coluna2 <= 7'b1011100;
+                    coluna3 <= 7'b1011101;
+                    coluna4 <= 7'b1110111;
+                    coluna5 <= 7'b1000111;
+						  jogo <= 1'b0;
+                end
+                default: begin // Outros casos
+                     coluna1 <= 7'b1111111;
+							coluna2 <= 7'b1111111;
+							coluna3 <= 7'b1111111;
+							coluna4 <= 7'b1111111;
+							coluna5 <= 7'b1111111;
+                end
+            endcase
+    end
+
+endmodule
