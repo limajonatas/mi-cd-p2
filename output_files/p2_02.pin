@@ -140,26 +140,26 @@ GND*                         : 74        :        :                   :         
 GND*                         : 75        :        :                   :         : 2         :                
 GND*                         : 76        :        :                   :         : 2         :                
 GND*                         : 77        :        :                   :         : 2         :                
-GND*                         : 78        :        :                   :         : 2         :                
+columns[4]                   : 78        : output : 3.3-V LVTTL       :         : 2         : Y              
 GNDIO                        : 79        : gnd    :                   :         :           :                
 VCCIO2                       : 80        : power  :                   : 3.3V    : 2         :                
-GND*                         : 81        :        :                   :         : 2         :                
-GND*                         : 82        :        :                   :         : 2         :                
-GND*                         : 83        :        :                   :         : 2         :                
-GND*                         : 84        :        :                   :         : 2         :                
-GND*                         : 85        :        :                   :         : 2         :                
+lines[4]                     : 81        : output : 3.3-V LVTTL       :         : 2         : Y              
+columns[3]                   : 82        : output : 3.3-V LVTTL       :         : 2         : Y              
+lines[1]                     : 83        : output : 3.3-V LVTTL       :         : 2         : Y              
+lines[2]                     : 84        : output : 3.3-V LVTTL       :         : 2         : Y              
+lines[0]                     : 85        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 86        :        :                   :         : 2         :                
-GND*                         : 87        :        :                   :         : 2         :                
+lines[3]                     : 87        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 88        :        :                   :         : 2         :                
-GND*                         : 89        :        :                   :         : 2         :                
+lines[6]                     : 89        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 90        :        :                   :         : 2         :                
-GND*                         : 91        :        :                   :         : 2         :                
+lines[5]                     : 91        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 92        :        :                   :         : 2         :                
 GNDIO                        : 93        : gnd    :                   :         :           :                
 VCCIO2                       : 94        : power  :                   : 3.3V    : 2         :                
-GND*                         : 95        :        :                   :         : 2         :                
+columns[2]                   : 95        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 96        :        :                   :         : 2         :                
-GND*                         : 97        :        :                   :         : 2         :                
+columns[0]                   : 97        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 98        :        :                   :         : 2         :                
-GND*                         : 99        :        :                   :         : 2         :                
+columns[1]                   : 99        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : 100       :        :                   :         : 2         :                

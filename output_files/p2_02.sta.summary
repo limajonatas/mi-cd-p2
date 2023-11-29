@@ -2,4 +2,40 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Setup 'clock'
+Slack : -4.313
+TNS   : -59.270
+
+Type  : Setup 'clk:clock_divider|out'
+Slack : -3.345
+TNS   : -31.200
+
+Type  : Setup 'debouncer_button:btn_change_game|debouncer'
+Slack : -1.330
+TNS   : -2.545
+
+Type  : Hold 'clk:clock_divider|out'
+Slack : -3.040
+TNS   : -3.040
+
+Type  : Hold 'clock'
+Slack : -1.103
+TNS   : -1.103
+
+Type  : Hold 'debouncer_button:btn_change_game|debouncer'
+Slack : 1.661
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clock'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'clk:clock_divider|out'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'debouncer_button:btn_change_game|debouncer'
+Slack : 0.234
+TNS   : 0.000
+
 ------------------------------------------------------------

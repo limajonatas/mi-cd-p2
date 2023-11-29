@@ -7,9 +7,11 @@ module main_module(
 	input reset_game_button,
    input clock,
 	input [2:0] columns_attack,
-	input [2:0] rows_attack
+	input [2:0] rows_attack,
+	output  [4:0] columns,
+   output [6:0] lines
 );
-	wire clock381HZ, change_game_button_wire, reset_game_button_wire, wire_save_game, wire_attack_button;
+	wire clock381HZ, change_game_button_wire, reset_game_button_wire, wire_save_game, wire_attack_button, game_selected_wire;
 	//wire col1_out_hit, col2_out_hit, col3_out_hit, col4_out_hit, col5_out_hit;
 	wire col1_out, col2_out, col3_out, col4_out, col5_out;
 	wire col1_in, col2_in, col3_in, col4_in, col5_in; //game_selection para main_controller
@@ -47,15 +49,15 @@ module main_module(
 		.clk(clock381HZ),
 		.button_out(wire_attack_button)
 	);
-	
+	/*
 	game_option_change change_game(
 		.game_option(game_selected_wire),
 		.game_change_button(change_game_button_wire)
-	);
+	);*/
 	
 	//seleção do jogo - MODO POSICIONAMENTO
 	game_selection select_game_option(
-		.game_selected_option(game_selected_wire),
+		.button(change_game_button_wire),
 		.col1_out(col1_in),
 		.col2_out(col2_in),
 		.col3_out(col3_in),
@@ -84,12 +86,11 @@ module main_module(
 	);
 	
     matriz_controller matrix(
-		 //.show(show), //POSICIONAMENTO -> 01 / ATAQUE -> 10
-		 .col1(col1_out), 
-		 .col2(col2_out),
-		 .col3(col3_out),
-		 .col4(col4_out),
-		 .col5(col5_out),
+		 .col1(col1_in), 
+		 .col2(col2_in),
+		 .col3(col3_in),
+		 .col4(col4_in),
+		 .col5(col5_in),
        .clk(clock381HZ),
        .columns(columns),
        .lines(lines)
