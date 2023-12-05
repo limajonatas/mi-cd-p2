@@ -10,6 +10,14 @@ module mudar_jogo(
     reg [1:0] jogo = 2'd0;
     parameter SETE_ALTOS = 7'b1111111;
 
+	 	initial begin
+		coluna1 = 7'b1111111;
+		coluna2 = 7'b1111111;
+		coluna3 = 7'b1111111;
+		coluna4 = 7'b1111111;
+		coluna5 = 7'b1111111;
+	end
+	 
     always @(posedge botao) begin
         case(jogo)
             2'd0: begin // JOGO 1
