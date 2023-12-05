@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at controlador_principal.v(30): always construct contains both blocking and non-blocking assignments File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
+Warning (10268): Verilog HDL information at controlador_principal.v(42): always construct contains both blocking and non-blocking assignments File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42

@@ -78,3 +78,13 @@ set_global_assignment -name VERILOG_FILE controlador_principal.v
 set_location_assignment PIN_42 -to ligado
 set_location_assignment PIN_40 -to modo
 set_location_assignment PIN_50 -to botao_salvar_jogo
+set_location_assignment PIN_38 -to ataque_linhas[0]
+set_location_assignment PIN_36 -to ataque_linhas[1]
+set_location_assignment PIN_34 -to ataque_linhas[2]
+set_location_assignment PIN_30 -to ataque_colunas[0]
+set_location_assignment PIN_33 -to ataque_colunas[1]
+set_location_assignment PIN_35 -to ataque_colunas[2]
+set_location_assignment PIN_48 -to botao_confirmar_ataque
+set_location_assignment PIN_54 -to led
+set_location_assignment PIN_86 -to ledRGB[0]
+set_location_assignment PIN_72 -to ledRGB[1]

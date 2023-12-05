@@ -2,39 +2,75 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Setup 'controlador_principal:controlador|jogo_salvo'
+Slack : -11.674
+TNS   : -20.663
+
 Type  : Setup 'modulo_clock:comb_3|saida'
-Slack : -9.286
-TNS   : -95.766
+Slack : -7.518
+TNS   : -88.731
 
 Type  : Setup 'clock'
-Slack : -4.407
-TNS   : -59.364
+Slack : -4.250
+TNS   : -59.207
 
-Type  : Setup 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
-Slack : -2.794
-TNS   : -15.373
+Type  : Setup 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
+Slack : -4.042
+TNS   : -31.637
 
 Type  : Setup 'modo'
-Slack : 1.224
-TNS   : 0.000
+Slack : -3.772
+TNS   : -13.375
 
-Type  : Hold 'modo'
-Slack : -3.223
-TNS   : -31.186
-
-Type  : Hold 'clock'
-Slack : -1.104
-TNS   : -1.104
+Type  : Setup 'ligado'
+Slack : -3.239
+TNS   : -44.812
 
 Type  : Hold 'modulo_clock:comb_3|saida'
-Slack : 0.628
+Slack : -1.785
+TNS   : -1.785
+
+Type  : Hold 'clock'
+Slack : -1.502
+TNS   : -1.502
+
+Type  : Hold 'modo'
+Slack : 0.335
 TNS   : 0.000
 
-Type  : Hold 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
-Slack : 1.813
+Type  : Hold 'ligado'
+Slack : 0.596
+TNS   : 0.000
+
+Type  : Hold 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
+Slack : 1.694
+TNS   : 0.000
+
+Type  : Hold 'controlador_principal:controlador|jogo_salvo'
+Slack : 5.724
+TNS   : 0.000
+
+Type  : Recovery 'controlador_principal:controlador|jogo_salvo'
+Slack : -5.541
+TNS   : -9.952
+
+Type  : Recovery 'modo'
+Slack : -3.297
+TNS   : -14.120
+
+Type  : Removal 'modo'
+Slack : 0.345
+TNS   : 0.000
+
+Type  : Removal 'controlador_principal:controlador|jogo_salvo'
+Slack : 1.650
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'clock'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'ligado'
 Slack : -2.289
 TNS   : -2.289
 
@@ -46,8 +82,12 @@ Type  : Minimum Pulse Width 'modulo_clock:comb_3|saida'
 Slack : 0.234
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
+Type  : Minimum Pulse Width 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
 Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'controlador_principal:controlador|jogo_salvo'
+Slack : 0.500
 TNS   : 0.000
 
 ------------------------------------------------------------

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for p2_03
-Tue Dec  5 10:17:57 2023
+Tue Dec  5 11:48:49 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -13,18 +13,15 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |modulo_principal|tratar_botao:tratar_botao_salvar_jogo|estado
-  9. State Machine - |modulo_principal|tratar_botao:tratar_botao_confirmar_ataque|estado
- 10. State Machine - |modulo_principal|tratar_botao:tratar_botao_mudar_jogo|estado
- 11. User-Specified and Inferred Latches
- 12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Parameter Settings for User Entity Instance: mudar_jogo:mudar_jogo
- 17. Parameter Settings for User Entity Instance: controlador_principal:controlador
- 18. Analysis & Synthesis Messages
- 19. Analysis & Synthesis Suppressed Messages
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: mudar_jogo:mudar_jogo
+ 14. Parameter Settings for User Entity Instance: controlador_principal:controlador
+ 15. Analysis & Synthesis Messages
+ 16. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -51,13 +48,13 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +-----------------------------+------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Tue Dec  5 10:17:57 2023          ;
+; Analysis & Synthesis Status ; Successful - Tue Dec  5 11:48:49 2023          ;
 ; Quartus Prime Version       ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name               ; p2_03                                          ;
 ; Top-level Entity Name       ; modulo_principal                               ;
 ; Family                      ; MAX II                                         ;
-; Total logic elements        ; 88                                             ;
-; Total pins                  ; 25                                             ;
+; Total logic elements        ; 142                                            ;
+; Total pins                  ; 26                                             ;
 ; Total virtual pins          ; 0                                              ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                  ;
 +-----------------------------+------------------------------------------------+
@@ -169,124 +166,106 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Total logic elements                        ; 88     ;
-;     -- Combinational with no register       ; 45     ;
-;     -- Register only                        ; 3      ;
-;     -- Combinational with a register        ; 40     ;
+; Total logic elements                        ; 142    ;
+;     -- Combinational with no register       ; 90     ;
+;     -- Register only                        ; 4      ;
+;     -- Combinational with a register        ; 48     ;
 ;                                             ;        ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 43     ;
-;     -- 3 input functions                    ; 8      ;
-;     -- 2 input functions                    ; 32     ;
-;     -- 1 input functions                    ; 2      ;
+;     -- 4 input functions                    ; 47     ;
+;     -- 3 input functions                    ; 43     ;
+;     -- 2 input functions                    ; 43     ;
+;     -- 1 input functions                    ; 5      ;
 ;     -- 0 input functions                    ; 0      ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 73     ;
+;     -- normal mode                          ; 127    ;
 ;     -- arithmetic mode                      ; 15     ;
 ;     -- qfbk mode                            ; 0      ;
 ;     -- register cascade mode                ; 0      ;
 ;     -- synchronous clear/load mode          ; 5      ;
 ;     -- asynchronous clear/load mode         ; 0      ;
 ;                                             ;        ;
-; Total registers                             ; 43     ;
+; Total registers                             ; 52     ;
 ; Total logic cells in carry chains           ; 16     ;
-; I/O pins                                    ; 25     ;
+; I/O pins                                    ; 26     ;
 ; Maximum fan-out node                        ; ligado ;
-; Maximum fan-out                             ; 23     ;
-; Total fan-out                               ; 329    ;
-; Average fan-out                             ; 2.91   ;
+; Maximum fan-out                             ; 33     ;
+; Total fan-out                               ; 487    ;
+; Average fan-out                             ; 2.90   ;
 +---------------------------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                              ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+-----------------------+--------------+
-; Compilation Hierarchy Node                 ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                     ; Entity Name           ; Library Name ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+-----------------------+--------------+
-; |modulo_principal                          ; 88 (0)      ; 43           ; 0          ; 25   ; 0            ; 45 (0)       ; 3 (0)             ; 40 (0)           ; 16 (0)          ; 0 (0)      ; |modulo_principal                                       ; modulo_principal      ; work         ;
-;    |controlador_principal:controlador|     ; 20 (20)     ; 0            ; 0          ; 0    ; 0            ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|controlador_principal:controlador     ; controlador_principal ; work         ;
-;    |matriz:matriz|                         ; 35 (35)     ; 15           ; 0          ; 0    ; 0            ; 20 (20)      ; 2 (2)             ; 13 (13)          ; 0 (0)           ; 0 (0)      ; |modulo_principal|matriz:matriz                         ; matriz                ; work         ;
-;    |modulo_clock:comb_3|                   ; 22 (22)     ; 17           ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 17 (17)          ; 16 (16)         ; 0 (0)      ; |modulo_principal|modulo_clock:comb_3                   ; modulo_clock          ; work         ;
-;    |mudar_jogo:mudar_jogo|                 ; 7 (7)       ; 7            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 6 (6)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|mudar_jogo:mudar_jogo                 ; mudar_jogo            ; work         ;
-;    |tratar_botao:tratar_botao_mudar_jogo|  ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|tratar_botao:tratar_botao_mudar_jogo  ; tratar_botao          ; work         ;
-;    |tratar_botao:tratar_botao_salvar_jogo| ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|tratar_botao:tratar_botao_salvar_jogo ; tratar_botao          ; work         ;
-+--------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------+-----------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                        ;
++-------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                      ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                          ; Entity Name           ; Library Name ;
++-------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+-----------------------+--------------+
+; |modulo_principal                               ; 142 (0)     ; 52           ; 0          ; 26   ; 0            ; 90 (0)       ; 4 (0)             ; 48 (0)           ; 16 (0)          ; 0 (0)      ; |modulo_principal                                            ; modulo_principal      ; work         ;
+;    |controlador_principal:controlador|          ; 70 (70)     ; 0            ; 0          ; 0    ; 0            ; 70 (70)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|controlador_principal:controlador          ; controlador_principal ; work         ;
+;    |matriz:matriz|                              ; 28 (28)     ; 15           ; 0          ; 0    ; 0            ; 13 (13)      ; 0 (0)             ; 15 (15)          ; 0 (0)           ; 0 (0)      ; |modulo_principal|matriz:matriz                              ; matriz                ; work         ;
+;    |modulo_clock:comb_3|                        ; 22 (22)     ; 17           ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 17 (17)          ; 16 (16)         ; 0 (0)      ; |modulo_principal|modulo_clock:comb_3                        ; modulo_clock          ; work         ;
+;    |mudar_jogo:mudar_jogo|                      ; 13 (13)     ; 11           ; 0          ; 0    ; 0            ; 2 (2)        ; 4 (4)             ; 7 (7)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|mudar_jogo:mudar_jogo                      ; mudar_jogo            ; work         ;
+;    |tratar_botao:tratar_botao_confirmar_ataque| ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|tratar_botao:tratar_botao_confirmar_ataque ; tratar_botao          ; work         ;
+;    |tratar_botao:tratar_botao_mudar_jogo|       ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|tratar_botao:tratar_botao_mudar_jogo       ; tratar_botao          ; work         ;
+;    |tratar_botao:tratar_botao_salvar_jogo|      ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |modulo_principal|tratar_botao:tratar_botao_salvar_jogo      ; tratar_botao          ; work         ;
++-------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------+
-; State Machine - |modulo_principal|tratar_botao:tratar_botao_salvar_jogo|estado ;
-+-----------+-----------+-----------+--------------------------------------------+
-; Name      ; estado.01 ; estado.11 ; estado.00                                  ;
-+-----------+-----------+-----------+--------------------------------------------+
-; estado.00 ; 0         ; 0         ; 0                                          ;
-; estado.01 ; 1         ; 0         ; 1                                          ;
-; estado.11 ; 0         ; 1         ; 1                                          ;
-+-----------+-----------+-----------+--------------------------------------------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------+
-; State Machine - |modulo_principal|tratar_botao:tratar_botao_confirmar_ataque|estado ;
-+-----------+-----------+-----------+-------------------------------------------------+
-; Name      ; estado.01 ; estado.11 ; estado.00                                       ;
-+-----------+-----------+-----------+-------------------------------------------------+
-; estado.00 ; 0         ; 0         ; 0                                               ;
-; estado.01 ; 1         ; 0         ; 1                                               ;
-; estado.11 ; 0         ; 1         ; 1                                               ;
-+-----------+-----------+-----------+-------------------------------------------------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------+
-; State Machine - |modulo_principal|tratar_botao:tratar_botao_mudar_jogo|estado ;
-+-----------+-----------+-----------+-------------------------------------------+
-; Name      ; estado.01 ; estado.11 ; estado.00                                 ;
-+-----------+-----------+-----------+-------------------------------------------+
-; estado.00 ; 0         ; 0         ; 0                                         ;
-; estado.01 ; 1         ; 0         ; 1                                         ;
-; estado.11 ; 0         ; 1         ; 1                                         ;
-+-----------+-----------+-----------+-------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                                        ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
-; Latch Name                                              ; Latch Enable Signal                                     ; Free of Timing Hazards ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
-; controlador_principal:controlador|coluna1_jogo_salvo[0] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[0] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[0] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna3_jogo_salvo[1] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[1] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[1] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna4_jogo_salvo[1] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[1] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[2] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[2] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna3_jogo_salvo[3] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[3] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[3] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna4_jogo_salvo[3] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[3] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[4] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[4] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna4_jogo_salvo[4] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[4] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[5] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna3_jogo_salvo[5] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[5] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna4_jogo_salvo[5] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[5] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna3_jogo_salvo[6] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna2_jogo_salvo[6] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna1_jogo_salvo[6] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna4_jogo_salvo[6] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; controlador_principal:controlador|coluna5_jogo_salvo[6] ; controlador_principal:controlador|coluna1_jogo_salvo[6] ; yes                    ;
-; Number of user-specified and inferred latches = 29      ;                                                         ;                        ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                                          ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
+; Latch Name                                                       ; Latch Enable Signal                                              ; Free of Timing Hazards ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
+; controlador_principal:controlador|ledRGB[0]                      ; controlador_principal:controlador|always0                        ; yes                    ;
+; controlador_principal:controlador|ledRGB[1]                      ; controlador_principal:controlador|always0                        ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[0]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[0]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[0]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna3_saida[1]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[1]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[1]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna4_saida[1]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[1]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[2]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[2]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna3_saida[3]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[3]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[3]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna4_saida[3]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[3]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[4]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[4]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna4_saida[4]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[4]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[5]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna3_saida[5]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[5]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna4_saida[5]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[5]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna3_saida[6]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna2_saida[6]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_saida[6]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna4_saida[6]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna5_saida[6]               ; ligado                                                           ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[0]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[1]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[2]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[3]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[4]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[5]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_jogo_salvo[6]          ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|jogo_salvo                     ; controlador_principal:controlador|jogo_salvo                     ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[0] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[0] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[1] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[1] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[2] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[2] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[3] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[3] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[4] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[4] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[5] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[5] ; yes                    ;
+; controlador_principal:controlador|coluna1_ataque_bem_sucedido[6] ; controlador_principal:controlador|coluna1_ataque_bem_sucedido[6] ; yes                    ;
+; Number of user-specified and inferred latches = 46               ;                                                                  ;                        ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
@@ -300,8 +279,6 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; mudar_jogo:mudar_jogo|coluna4[0,2]                   ; Stuck at VCC due to stuck port data_in       ;
 ; mudar_jogo:mudar_jogo|coluna3[2,4]                   ; Stuck at VCC due to stuck port data_in       ;
 ; mudar_jogo:mudar_jogo|coluna2[2]                     ; Stuck at VCC due to stuck port data_in       ;
-; mudar_jogo:mudar_jogo|coluna1[1,6]                   ; Merged with mudar_jogo:mudar_jogo|coluna4[6] ;
-; mudar_jogo:mudar_jogo|coluna2[5]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[6] ;
 ; mudar_jogo:mudar_jogo|coluna1[3]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[6] ;
 ; mudar_jogo:mudar_jogo|coluna2[3]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[6] ;
 ; mudar_jogo:mudar_jogo|coluna5[6]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[6] ;
@@ -309,34 +286,21 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; mudar_jogo:mudar_jogo|coluna4[4]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[5] ;
 ; mudar_jogo:mudar_jogo|coluna2[1]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[3] ;
 ; mudar_jogo:mudar_jogo|coluna5[3]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[3] ;
-; mudar_jogo:mudar_jogo|coluna1[2]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[3] ;
-; mudar_jogo:mudar_jogo|coluna4[1]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[3] ;
-; mudar_jogo:mudar_jogo|coluna5[0..2]                  ; Merged with mudar_jogo:mudar_jogo|coluna4[3] ;
-; mudar_jogo:mudar_jogo|coluna1[0]                     ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
-; mudar_jogo:mudar_jogo|coluna2[6]                     ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
-; mudar_jogo:mudar_jogo|coluna3[6]                     ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
+; mudar_jogo:mudar_jogo|coluna1[2]                     ; Merged with mudar_jogo:mudar_jogo|coluna4[1] ;
+; mudar_jogo:mudar_jogo|coluna5[0..2]                  ; Merged with mudar_jogo:mudar_jogo|coluna4[1] ;
 ; mudar_jogo:mudar_jogo|coluna1[4]                     ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
 ; mudar_jogo:mudar_jogo|coluna5[4]                     ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
-; mudar_jogo:mudar_jogo|jogo[0]                        ; Merged with mudar_jogo:mudar_jogo|coluna5[5] ;
 ; mudar_jogo:mudar_jogo|coluna2[0]                     ; Merged with mudar_jogo:mudar_jogo|jogo[1]    ;
-; mudar_jogo:mudar_jogo|coluna2[4]                     ; Merged with mudar_jogo:mudar_jogo|coluna3[1] ;
+; mudar_jogo:mudar_jogo|coluna1[0]                     ; Merged with mudar_jogo:mudar_jogo|jogo[0]    ;
+; mudar_jogo:mudar_jogo|coluna2[6]                     ; Merged with mudar_jogo:mudar_jogo|jogo[0]    ;
+; mudar_jogo:mudar_jogo|coluna3[6]                     ; Merged with mudar_jogo:mudar_jogo|jogo[0]    ;
 ; mudar_jogo:mudar_jogo|coluna1[5]                     ; Merged with mudar_jogo:mudar_jogo|coluna3[5] ;
-; tratar_botao:tratar_botao_salvar_jogo|estado.00      ; Lost fanout                                  ;
-; tratar_botao:tratar_botao_confirmar_ataque|estado.00 ; Lost fanout                                  ;
-; tratar_botao:tratar_botao_confirmar_ataque|estado.11 ; Lost fanout                                  ;
-; tratar_botao:tratar_botao_mudar_jogo|estado.00       ; Lost fanout                                  ;
-; tratar_botao:tratar_botao_confirmar_ataque|estado.01 ; Lost fanout                                  ;
-; Total Number of Removed Registers = 36               ;                                              ;
+; mudar_jogo:mudar_jogo|coluna1[1,6]                   ; Merged with mudar_jogo:mudar_jogo|coluna2[5] ;
+; tratar_botao:tratar_botao_confirmar_ataque|estado[2] ; Stuck at GND due to stuck port clock_enable  ;
+; tratar_botao:tratar_botao_salvar_jogo|estado[2]      ; Stuck at GND due to stuck port clock_enable  ;
+; tratar_botao:tratar_botao_mudar_jogo|estado[2]       ; Stuck at GND due to stuck port clock_enable  ;
+; Total Number of Removed Registers = 30               ;                                              ;
 +------------------------------------------------------+----------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                      ;
-+------------------------------------------------------+--------------------+------------------------------------------------------+
-; Register name                                        ; Reason for Removal ; Registers Removed due to This Register               ;
-+------------------------------------------------------+--------------------+------------------------------------------------------+
-; tratar_botao:tratar_botao_confirmar_ataque|estado.11 ; Lost Fanouts       ; tratar_botao:tratar_botao_confirmar_ataque|estado.01 ;
-+------------------------------------------------------+--------------------+------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -344,7 +308,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 43    ;
+; Total registers                              ; 52    ;
 ; Number of registers using Synchronous Clear  ; 5     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -354,13 +318,33 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
-; 8:1                ; 5 bits    ; 25 LEs        ; 15 LEs               ; 10 LEs                 ; Yes        ; |modulo_principal|matriz:matriz|colunas[0] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; mudar_jogo:mudar_jogo|coluna4[1]       ; 3       ;
+; mudar_jogo:mudar_jogo|coluna3[1]       ; 1       ;
+; mudar_jogo:mudar_jogo|coluna4[3]       ; 1       ;
+; mudar_jogo:mudar_jogo|coluna2[5]       ; 4       ;
+; mudar_jogo:mudar_jogo|coluna4[5]       ; 1       ;
+; mudar_jogo:mudar_jogo|coluna4[6]       ; 3       ;
+; mudar_jogo:mudar_jogo|coluna5[5]       ; 3       ;
+; mudar_jogo:mudar_jogo|coluna2[4]       ; 1       ;
+; mudar_jogo:mudar_jogo|coluna3[5]       ; 3       ;
+; Total number of inverted registers = 9 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 8:1                ; 5 bits    ; 25 LEs        ; 15 LEs               ; 10 LEs                 ; Yes        ; |modulo_principal|matriz:matriz|colunas[0]                 ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; Yes        ; |modulo_principal|matriz:matriz|linhas[1]                  ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; No         ; |modulo_principal|controlador_principal:controlador|ledRGB ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------+
@@ -379,6 +363,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Parameter Name ; Value   ; Type                                                ;
 +----------------+---------+-----------------------------------------------------+
 ; SETE_ALTOS     ; 1111111 ; Unsigned Binary                                     ;
+; UM             ; 001     ; Unsigned Binary                                     ;
+; DOIS           ; 010     ; Unsigned Binary                                     ;
+; TRES           ; 011     ; Unsigned Binary                                     ;
+; QUATRO         ; 100     ; Unsigned Binary                                     ;
+; CINCO          ; 101     ; Unsigned Binary                                     ;
+; SEIS           ; 110     ; Unsigned Binary                                     ;
+; SETE           ; 111     ; Unsigned Binary                                     ;
 +----------------+---------+-----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -389,14 +380,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Tue Dec  5 10:17:23 2023
+    Info: Processing started: Tue Dec  5 11:48:39 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off p2_03 -c p2_03
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file modulo_clock.v
     Info (12023): Found entity 1: modulo_clock File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_clock.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tratar_botao.v
-    Info (12023): Found entity 1: tratar_botao File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/tratar_botao.v Line: 1
+    Info (12023): Found entity 1: tratar_botao File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/tratar_botao.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file matriz.v
     Info (12023): Found entity 1: matriz File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/matriz.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mudar_jogo.v
@@ -410,96 +401,134 @@ Info (12127): Elaborating entity "modulo_principal" for the top level hierarchy
 Info (12128): Elaborating entity "modulo_clock" for hierarchy "modulo_clock:comb_3" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 24
 Info (12128): Elaborating entity "tratar_botao" for hierarchy "tratar_botao:tratar_botao_mudar_jogo" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 31
 Info (12128): Elaborating entity "mudar_jogo" for hierarchy "mudar_jogo:mudar_jogo" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 54
-Warning (10230): Verilog HDL assignment warning at mudar_jogo.v(21): truncated value with size 32 to match size of target (2) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/mudar_jogo.v Line: 21
 Warning (10230): Verilog HDL assignment warning at mudar_jogo.v(29): truncated value with size 32 to match size of target (2) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/mudar_jogo.v Line: 29
 Warning (10230): Verilog HDL assignment warning at mudar_jogo.v(37): truncated value with size 32 to match size of target (2) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/mudar_jogo.v Line: 37
+Warning (10230): Verilog HDL assignment warning at mudar_jogo.v(45): truncated value with size 32 to match size of target (2) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/mudar_jogo.v Line: 45
 Info (12128): Elaborating entity "controlador_principal" for hierarchy "controlador_principal:controlador" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 74
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "coluna1_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "coluna2_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "coluna3_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "coluna4_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "coluna5_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(30): inferring latch(es) for variable "led", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Info (10041): Inferred latch for "led" at controlador_principal.v(30) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 30
-Info (10041): Inferred latch for "coluna5_jogo_salvo[0]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[1]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[2]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[3]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[4]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[5]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna5_jogo_salvo[6]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[0]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[1]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[2]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[3]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[4]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[5]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna4_jogo_salvo[6]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[0]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[1]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[2]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[3]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[4]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[5]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna3_jogo_salvo[6]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[0]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[1]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[2]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[3]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[4]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[5]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna2_jogo_salvo[6]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[0]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[1]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[2]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[3]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[4]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[5]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Info (10041): Inferred latch for "coluna1_jogo_salvo[6]" at controlador_principal.v(71) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
+Warning (10036): Verilog HDL or VHDL warning at controlador_principal.v(21): object "coluna2_jogo_salvo" assigned a value but never read File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 21
+Warning (10036): Verilog HDL or VHDL warning at controlador_principal.v(22): object "coluna3_jogo_salvo" assigned a value but never read File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 22
+Warning (10036): Verilog HDL or VHDL warning at controlador_principal.v(23): object "coluna4_jogo_salvo" assigned a value but never read File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 23
+Warning (10036): Verilog HDL or VHDL warning at controlador_principal.v(24): object "coluna5_jogo_salvo" assigned a value but never read File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 24
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "ledRGB", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna1_saida", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna2_saida", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna3_saida", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna4_saida", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna5_saida", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna1_jogo_salvo", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna1_ataque_bem_sucedido", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna2_ataque_bem_sucedido", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna3_ataque_bem_sucedido", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna4_ataque_bem_sucedido", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Warning (10240): Verilog HDL Always Construct warning at controlador_principal.v(42): inferring latch(es) for variable "coluna5_ataque_bem_sucedido", which holds its previous value in one or more paths through the always construct File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Info (10041): Inferred latch for "ledRGB[0]" at controlador_principal.v(42) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Info (10041): Inferred latch for "ledRGB[1]" at controlador_principal.v(42) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 42
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_ataque_bem_sucedido[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_ataque_bem_sucedido[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_ataque_bem_sucedido[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_ataque_bem_sucedido[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_ataque_bem_sucedido[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_jogo_salvo[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "jogo_salvo" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna5_saida[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna4_saida[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna3_saida[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna2_saida[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[0]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[1]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[2]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[3]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[4]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[5]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (10041): Inferred latch for "coluna1_saida[6]" at controlador_principal.v(115) File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
 Info (12128): Elaborating entity "matriz" for hierarchy "matriz:matriz" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 85
 Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "botao_salvar_jogo" has no driver File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 5
 Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna3_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[2]" merged with LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_jogo_salvo[1]" merged with LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[2]" merged with LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[1]" merged with LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_jogo_salvo[3]" merged with LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[3]" merged with LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[5]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_jogo_salvo[5]" merged with LATCH primitive "controlador_principal:controlador|coluna3_jogo_salvo[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_jogo_salvo[4]" merged with LATCH primitive "controlador_principal:controlador|coluna3_jogo_salvo[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[3]" merged with LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna2_jogo_salvo[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[5]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[4]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_jogo_salvo[4]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[4]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[5]" merged with LATCH primitive "controlador_principal:controlador|coluna3_jogo_salvo[5]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 71
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "led" is stuck at VCC File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 13
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
-Warning (21074): Design contains 7 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "ataque_colunas[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 8
-    Warning (15610): No output dependent on input pin "ataque_colunas[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 8
-    Warning (15610): No output dependent on input pin "ataque_colunas[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 8
-    Warning (15610): No output dependent on input pin "ataque_linhas[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 9
-    Warning (15610): No output dependent on input pin "ataque_linhas[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 9
-    Warning (15610): No output dependent on input pin "ataque_linhas[2]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 9
-    Warning (15610): No output dependent on input pin "botao_confirmar_ataque" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/modulo_principal.v Line: 7
-Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_saida[1]" merged with LATCH primitive "controlador_principal:controlador|coluna5_saida[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_saida[2]" merged with LATCH primitive "controlador_principal:controlador|coluna5_saida[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_saida[1]" merged with LATCH primitive "controlador_principal:controlador|coluna5_saida[0]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_saida[3]" merged with LATCH primitive "controlador_principal:controlador|coluna2_saida[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_saida[3]" merged with LATCH primitive "controlador_principal:controlador|coluna2_saida[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_saida[5]" merged with LATCH primitive "controlador_principal:controlador|coluna3_saida[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_saida[4]" merged with LATCH primitive "controlador_principal:controlador|coluna3_saida[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna4_saida[6]" merged with LATCH primitive "controlador_principal:controlador|coluna2_saida[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_saida[6]" merged with LATCH primitive "controlador_principal:controlador|coluna2_saida[3]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna5_saida[5]" merged with LATCH primitive "controlador_principal:controlador|coluna5_saida[4]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna2_saida[6]" merged with LATCH primitive "controlador_principal:controlador|coluna3_saida[6]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+    Info (13026): Duplicate LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[6]" merged with LATCH primitive "controlador_principal:controlador|coluna1_jogo_salvo[1]" File: D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/controlador_principal.v Line: 115
+Info (21057): Implemented 168 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
-    Info (21059): Implemented 13 output pins
+    Info (21059): Implemented 14 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 88 logic cells
+    Info (21061): Implemented 142 logic cells
 Info (144001): Generated suppressed messages file D:/Documents/ProjectsQuartus/MI2023.2 P2 TESTE02/output_files/p2_03.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4730 megabytes
-    Info: Processing ended: Tue Dec  5 10:17:58 2023
-    Info: Elapsed time: 00:00:35
-    Info: Total CPU time (on all processors): 00:00:35
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 4711 megabytes
+    Info: Processing ended: Tue Dec  5 11:48:49 2023
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:09
 
 
 +------------------------------------------+

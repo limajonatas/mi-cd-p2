@@ -9,7 +9,7 @@ module modulo_principal(
 	input [2:0] ataque_linhas,
 	output [4:0] colunas,
    output [6:0] linhas,
-	output led
+	output [1:0] ledRGB
 );
 
 	wire clock_saida_381HZ, botao_mudar_jogo_saida, botao_salvar_jogo_saida, botao_confirmar_ataque_saida;
@@ -70,7 +70,7 @@ module modulo_principal(
 		.coluna3_saida(coluna3_saida),
 		.coluna4_saida(coluna4_saida),
 		.coluna5_saida(coluna5_saida),
-		.led(led)
+		.ledRGB(ledRGB)
 		);
 	
 	matriz matriz(
