@@ -1,37 +1,20 @@
-/*MÓDULO RESPONSÁVEL POR TRATAR O RUIDO DO BOTÃO*/
 module tratar_botao(
-	input botao, 
-	input clock, 
-	output botao_saida
-	);
+    input botao,
+    input clock,
+    output botao_saida
+);
 
-reg [2:0] estado = 3'b00;
-reg debouncer = 1'b0;
+reg [1:0] estado = 2'b00;
 
 always @(posedge clock) begin
-	case (estado)
-		3'b00: begin
-			if(botao) estado <= estado + 1'b1;
-		end
-		3'b01: begin
-			if(botao) estado <= estado + 1'b1;
-			else estado <= 3'b0;
-		end
-		3'b10: begin 
-			if(botao) begin
-				estado <= estado + 1'b1;
-				debouncer <= 1'b1;
-			end
-			else estado <= 3'b0;
-		end
-		3'b11: begin
-			if(!botao) begin
-				estado <= 3'b0;
-				debouncer <= 1'b0;
-			end
-		end
-	endcase			
+    if (botao) begin
+        if (estado == 2'b01)
+            estado <= 2'b11;
+        else
+            estado <= 2'b01;
+    end else
+        estado <= 2'b00;
 end
 
-assign botao_saida = debouncer;
+assign botao_saida = (estado == 2'b11);
 endmodule

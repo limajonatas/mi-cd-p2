@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Wed Nov 29 16:47:45 2023
+Analysis & Synthesis Status : Successful - Mon Dec  4 22:32:15 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : p2_03
 Top-level Entity Name : modulo_principal
 Family : MAX II
-Total logic elements : 39
-Total pins : 14
+Total logic elements : 88
+Total pins : 24
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

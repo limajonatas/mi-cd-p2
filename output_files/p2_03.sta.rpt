@@ -1,5 +1,5 @@
 Timing Analyzer report for p2_03
-Wed Nov 29 16:47:51 2023
+Mon Dec  4 22:32:20 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -16,23 +16,25 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   8. Recovery Summary
   9. Removal Summary
  10. Minimum Pulse Width Summary
- 11. Setup: 'clock'
- 12. Setup: 'modulo_clock:comb_3|saida'
- 13. Setup: 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
- 14. Hold: 'modulo_clock:comb_3|saida'
- 15. Hold: 'clock'
- 16. Hold: 'tratar_botao:tratar_botao_mudar_jogo|debouncer'
- 17. Setup Transfers
- 18. Hold Transfers
- 19. Report TCCS
- 20. Report RSKM
- 21. Unconstrained Paths Summary
- 22. Clock Status Summary
- 23. Unconstrained Input Ports
- 24. Unconstrained Output Ports
+ 11. Setup: 'modulo_clock:comb_3|saida'
+ 12. Setup: 'clock'
+ 13. Setup: 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
+ 14. Setup: 'ligado'
+ 15. Hold: 'ligado'
+ 16. Hold: 'clock'
+ 17. Hold: 'modulo_clock:comb_3|saida'
+ 18. Hold: 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
+ 19. Setup Transfers
+ 20. Hold Transfers
+ 21. Report TCCS
+ 22. Report RSKM
+ 23. Unconstrained Paths Summary
+ 24. Clock Status Summary
  25. Unconstrained Input Ports
  26. Unconstrained Output Ports
- 27. Timing Analyzer Messages
+ 27. Unconstrained Input Ports
+ 28. Unconstrained Output Ports
+ 29. Timing Analyzer Messages
 
 
 
@@ -92,8 +94,9 @@ https://fpgasoftware.intel.com/eula.
 ; Clock Name                                     ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                            ;
 +------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------------------------------+
 ; clock                                          ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clock }                                          ;
+; ligado                                         ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { ligado }                                         ;
 ; modulo_clock:comb_3|saida                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { modulo_clock:comb_3|saida }                      ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { tratar_botao:tratar_botao_mudar_jogo|debouncer } ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { tratar_botao:tratar_botao_mudar_jogo|estado.11 } ;
 +------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------------------------------+
 
 
@@ -102,9 +105,9 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                     ; Note ;
 +------------+-----------------+------------------------------------------------+------+
-; 189.11 MHz ; 189.11 MHz      ; clock                                          ;      ;
-; 234.91 MHz ; 234.91 MHz      ; modulo_clock:comb_3|saida                      ;      ;
-; 424.27 MHz ; 424.27 MHz      ; tratar_botao:tratar_botao_mudar_jogo|debouncer ;      ;
+; 175.19 MHz ; 175.19 MHz      ; modulo_clock:comb_3|saida                      ;      ;
+; 189.79 MHz ; 189.79 MHz      ; clock                                          ;      ;
+; 287.6 MHz  ; 287.6 MHz       ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ;      ;
 +------------+-----------------+------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -114,9 +117,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------------------------------------------+--------+---------------+
 ; Clock                                          ; Slack  ; End Point TNS ;
 +------------------------------------------------+--------+---------------+
-; clock                                          ; -4.288 ; -59.245       ;
-; modulo_clock:comb_3|saida                      ; -3.257 ; -31.078       ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; -1.357 ; -2.571        ;
+; modulo_clock:comb_3|saida                      ; -9.517 ; -98.195       ;
+; clock                                          ; -4.269 ; -59.226       ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; -2.477 ; -13.521       ;
+; ligado                                         ; 1.214  ; 0.000         ;
 +------------------------------------------------+--------+---------------+
 
 
@@ -125,9 +129,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------------------------------------------+--------+---------------+
 ; Clock                                          ; Slack  ; End Point TNS ;
 +------------------------------------------------+--------+---------------+
-; modulo_clock:comb_3|saida                      ; -2.058 ; -2.058        ;
-; clock                                          ; -1.104 ; -1.104        ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 1.660  ; 0.000         ;
+; ligado                                         ; -3.187 ; -26.423       ;
+; clock                                          ; -1.080 ; -1.080        ;
+; modulo_clock:comb_3|saida                      ; 1.686  ; 0.000         ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.768  ; 0.000         ;
 +------------------------------------------------+--------+---------------+
 
 
@@ -149,9 +154,118 @@ No paths to report.
 ; Clock                                          ; Slack  ; End Point TNS ;
 +------------------------------------------------+--------+---------------+
 ; clock                                          ; -2.289 ; -2.289        ;
+; ligado                                         ; -2.289 ; -2.289        ;
 ; modulo_clock:comb_3|saida                      ; 0.234  ; 0.000         ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 0.234  ; 0.000         ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.234  ; 0.000         ;
 +------------------------------------------------+--------+---------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'modulo_clock:comb_3|saida'                                                                                                                                                                                                      ;
++--------+---------------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
+; Slack  ; From Node                                               ; To Node                                        ; Launch Clock                                   ; Latch Clock               ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
+; -9.517 ; controlador_principal:controlador|coluna2_jogo_salvo[4] ; matriz:matriz|linhas[4]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.181     ; 4.503      ;
+; -9.453 ; controlador_principal:controlador|coluna3_jogo_salvo[5] ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.054     ; 4.566      ;
+; -9.426 ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; matriz:matriz|linhas[3]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.625     ; 4.968      ;
+; -9.411 ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.156     ; 4.422      ;
+; -9.358 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.165     ; 4.360      ;
+; -9.333 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.165     ; 4.335      ;
+; -9.303 ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; matriz:matriz|linhas[0]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.641     ; 4.829      ;
+; -9.211 ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; matriz:matriz|linhas[3]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.156     ; 4.222      ;
+; -9.192 ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; matriz:matriz|linhas[6]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.641     ; 4.718      ;
+; -9.178 ; controlador_principal:controlador|coluna3_jogo_salvo[1] ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.645     ; 4.700      ;
+; -9.040 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[6]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.165     ; 4.042      ;
+; -8.926 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.623     ; 4.470      ;
+; -8.923 ; controlador_principal:controlador|coluna2_jogo_salvo[0] ; matriz:matriz|linhas[0]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.640     ; 4.450      ;
+; -8.734 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[0]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.623     ; 4.278      ;
+; -8.674 ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; matriz:matriz|linhas[4]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.180     ; 3.661      ;
+; -8.390 ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -5.180     ; 3.377      ;
+; -8.342 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.501     ; 4.008      ;
+; -8.314 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[4]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.501     ; 3.980      ;
+; -8.080 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[3]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.501     ; 3.746      ;
+; -8.030 ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; matriz:matriz|linhas[6]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.625     ; 3.572      ;
+; -7.206 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[2]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; -4.623     ; 2.750      ;
+; -5.273 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[3]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.953      ;
+; -5.027 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[5]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.707      ;
+; -4.999 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[4]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.679      ;
+; -4.944 ; mudar_jogo:mudar_jogo|coluna3[1]                        ; matriz:matriz|linhas[4]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.624      ;
+; -4.853 ; mudar_jogo:mudar_jogo|jogo[1]                           ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.533      ;
+; -4.765 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[3]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.445      ;
+; -4.741 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[1]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.421      ;
+; -4.708 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[5]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.375      ;
+; -4.690 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[1]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.370      ;
+; -4.665 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[5]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.345      ;
+; -4.597 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[6]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.264      ;
+; -4.554 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[5]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.221      ;
+; -4.549 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.229      ;
+; -4.535 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.202      ;
+; -4.500 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.167      ;
+; -4.488 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[3]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.168      ;
+; -4.470 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.137      ;
+; -4.392 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 5.059      ;
+; -4.372 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[6]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 5.052      ;
+; -4.299 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[4]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.979      ;
+; -4.291 ; mudar_jogo:mudar_jogo|coluna3[5]                        ; matriz:matriz|linhas[5]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.971      ;
+; -4.281 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.961      ;
+; -4.262 ; ligado                                                  ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 8.091      ;
+; -4.237 ; mudar_jogo:mudar_jogo|coluna3[1]                        ; matriz:matriz|linhas[1]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.917      ;
+; -4.170 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[6]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.850      ;
+; -4.137 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.804      ;
+; -4.075 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.742      ;
+; -4.075 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.742      ;
+; -4.075 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.742      ;
+; -4.075 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.742      ;
+; -4.015 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[5]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 4.695      ;
+; -3.990 ; ligado                                                  ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 7.819      ;
+; -3.962 ; ligado                                                  ; matriz:matriz|linhas[4]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 7.791      ;
+; -3.957 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[6]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.624      ;
+; -3.953 ; ligado                                                  ; matriz:matriz|linhas[3]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 7.782      ;
+; -3.929 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.596      ;
+; -3.811 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.478      ;
+; -3.778 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.445      ;
+; -3.778 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.445      ;
+; -3.778 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.445      ;
+; -3.778 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.445      ;
+; -3.762 ; ligado                                                  ; matriz:matriz|linhas[1]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 8.091      ;
+; -3.744 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.411      ;
+; -3.680 ; ligado                                                  ; matriz:matriz|linhas[0]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 7.509      ;
+; -3.596 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.263      ;
+; -3.490 ; ligado                                                  ; matriz:matriz|linhas[5]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 7.819      ;
+; -3.462 ; ligado                                                  ; matriz:matriz|linhas[4]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 7.791      ;
+; -3.453 ; ligado                                                  ; matriz:matriz|linhas[3]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 7.782      ;
+; -3.419 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.086      ;
+; -3.417 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.084      ;
+; -3.416 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[5]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.083      ;
+; -3.405 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[6]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.072      ;
+; -3.404 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.071      ;
+; -3.383 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.050      ;
+; -3.383 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.050      ;
+; -3.383 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.050      ;
+; -3.383 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 4.050      ;
+; -3.206 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[2]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.873      ;
+; -3.183 ; ligado                                                  ; matriz:matriz|linhas[6]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 7.012      ;
+; -3.180 ; ligado                                                  ; matriz:matriz|linhas[0]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 7.509      ;
+; -3.171 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.838      ;
+; -3.072 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.739      ;
+; -3.004 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.671      ;
+; -2.852 ; matriz:matriz|contador[1]                               ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.519      ;
+; -2.744 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.411      ;
+; -2.683 ; ligado                                                  ; matriz:matriz|linhas[6]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 7.012      ;
+; -2.588 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[2]                        ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 1.000        ; 0.013      ; 3.268      ;
+; -2.558 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[2]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.225      ;
+; -2.548 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.215      ;
+; -2.544 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.211      ;
+; -2.363 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.030      ;
+; -2.219 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.886      ;
+; -1.792 ; ligado                                                  ; matriz:matriz|linhas[2]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 0.500        ; 3.662      ; 5.621      ;
+; -1.665 ; matriz:matriz|contador[1]                               ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.332      ;
+; -1.556 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.223      ;
+; -1.533 ; matriz:matriz|colunas[4]                                ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.200      ;
+; -1.292 ; ligado                                                  ; matriz:matriz|linhas[2]                        ; ligado                                         ; modulo_clock:comb_3|saida ; 1.000        ; 3.662      ; 5.621      ;
+; -1.241 ; tratar_botao:tratar_botao_mudar_jogo|estado.01          ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 1.908      ;
+; -1.240 ; tratar_botao:tratar_botao_mudar_jogo|estado.01          ; tratar_botao:tratar_botao_mudar_jogo|estado.01 ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 1.907      ;
++--------+---------------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -159,20 +273,21 @@ No paths to report.
 +--------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                        ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
-; -4.288 ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.955      ;
-; -4.149 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.816      ;
-; -4.142 ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.809      ;
+; -4.269 ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.936      ;
+; -4.098 ; modulo_clock:comb_3|contador[15] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.765      ;
+; -4.038 ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.705      ;
+; -4.000 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.667      ;
 ; -3.982 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.649      ;
 ; -3.982 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.649      ;
 ; -3.982 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.649      ;
 ; -3.982 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[11] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.649      ;
 ; -3.982 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[12] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.649      ;
-; -3.973 ; modulo_clock:comb_3|contador[15] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.640      ;
-; -3.971 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.638      ;
 ; -3.969 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.636      ;
 ; -3.969 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.636      ;
 ; -3.969 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.636      ;
-; -3.962 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.629      ;
+; -3.930 ; modulo_clock:comb_3|contador[13] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.597      ;
+; -3.900 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.567      ;
+; -3.895 ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.562      ;
 ; -3.871 ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.538      ;
 ; -3.871 ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.538      ;
 ; -3.871 ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.538      ;
@@ -189,9 +304,7 @@ No paths to report.
 ; -3.822 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.489      ;
 ; -3.822 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.489      ;
 ; -3.822 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.489      ;
-; -3.805 ; modulo_clock:comb_3|contador[13] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.472      ;
-; -3.790 ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.457      ;
-; -3.758 ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.425      ;
+; -3.764 ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.431      ;
 ; -3.744 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.411      ;
 ; -3.744 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.411      ;
 ; -3.744 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.411      ;
@@ -200,6 +313,7 @@ No paths to report.
 ; -3.731 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.398      ;
 ; -3.731 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.398      ;
 ; -3.731 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.398      ;
+; -3.721 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.388      ;
 ; -3.663 ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.330      ;
 ; -3.663 ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.330      ;
 ; -3.663 ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.330      ;
@@ -213,11 +327,10 @@ No paths to report.
 ; -3.622 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.289      ;
 ; -3.622 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[11] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.289      ;
 ; -3.622 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[12] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.289      ;
-; -3.612 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.279      ;
 ; -3.609 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.276      ;
 ; -3.609 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.276      ;
 ; -3.609 ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.276      ;
-; -3.598 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.265      ;
+; -3.604 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.271      ;
 ; -3.515 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.182      ;
 ; -3.515 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.182      ;
 ; -3.515 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.182      ;
@@ -226,23 +339,24 @@ No paths to report.
 ; -3.502 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.169      ;
 ; -3.502 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.169      ;
 ; -3.502 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.169      ;
-; -3.486 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.153      ;
-; -3.427 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.094      ;
-; -3.400 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.067      ;
-; -3.378 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.045      ;
-; -3.378 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.045      ;
-; -3.378 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.045      ;
+; -3.465 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.132      ;
+; -3.406 ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.073      ;
+; -3.395 ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.062      ;
+; -3.379 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.046      ;
+; -3.379 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.046      ;
+; -3.379 ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.046      ;
 ; -3.362 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[8]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.029      ;
 ; -3.362 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[9]  ; clock        ; clock       ; 1.000        ; 0.000      ; 4.029      ;
 ; -3.362 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[10] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.029      ;
 ; -3.362 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[11] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.029      ;
 ; -3.362 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[12] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.029      ;
+; -3.361 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|saida        ; clock        ; clock       ; 1.000        ; 0.000      ; 4.028      ;
 ; -3.349 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.016      ;
 ; -3.349 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.016      ;
 ; -3.349 ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 4.016      ;
-; -3.258 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.925      ;
-; -3.258 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.925      ;
-; -3.258 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.925      ;
+; -3.257 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.924      ;
+; -3.257 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.924      ;
+; -3.257 ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.924      ;
 ; -3.227 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[3]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.894      ;
 ; -3.227 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[4]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.894      ;
 ; -3.227 ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[5]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.894      ;
@@ -251,113 +365,73 @@ No paths to report.
 ; -3.210 ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.877      ;
 ; -3.210 ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.877      ;
 ; -3.210 ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.877      ;
+; -3.136 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
+; -3.136 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
+; -3.136 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
 ; -3.136 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[3]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
 ; -3.136 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[4]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
 ; -3.136 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[5]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
 ; -3.136 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[6]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
 ; -3.136 ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[7]  ; clock        ; clock       ; 1.000        ; 0.000      ; 3.803      ;
-; -3.134 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[13] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.801      ;
-; -3.134 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[14] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.801      ;
-; -3.134 ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[15] ; clock        ; clock       ; 1.000        ; 0.000      ; 3.801      ;
 +--------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'modulo_clock:comb_3|saida'                                                                                                                                                                                             ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
-; Slack  ; From Node                                      ; To Node                                        ; Launch Clock                                   ; Latch Clock               ; Relationship ; Clock Skew ; Data Delay ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
-; -3.257 ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.924      ;
-; -3.257 ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.924      ;
-; -3.257 ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.924      ;
-; -3.257 ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.924      ;
-; -3.257 ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.924      ;
-; -3.104 ; matriz:matriz|contador[1]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.771      ;
-; -2.905 ; matriz:matriz|contador[0]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.572      ;
-; -2.740 ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.407      ;
-; -2.740 ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.407      ;
-; -2.740 ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.407      ;
-; -2.740 ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.407      ;
-; -2.740 ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.407      ;
-; -2.481 ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.148      ;
-; -2.435 ; matriz:matriz|contador[1]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.102      ;
-; -2.413 ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 3.080      ;
-; -2.317 ; matriz:matriz|contador[1]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.984      ;
-; -2.220 ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.887      ;
-; -2.220 ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.887      ;
-; -2.220 ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.887      ;
-; -2.220 ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.887      ;
-; -2.220 ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.887      ;
-; -2.192 ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.859      ;
-; -2.174 ; matriz:matriz|contador[2]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.841      ;
-; -1.980 ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.647      ;
-; -1.818 ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.485      ;
-; -1.813 ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.480      ;
-; -1.500 ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.167      ;
-; -1.497 ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.164      ;
-; -1.490 ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 2.157      ;
-; -1.429 ; mudar_jogo:mudar_jogo|jogo                     ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 1.000        ; 0.523      ; 2.619      ;
-; -1.237 ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 1.904      ;
-; -1.237 ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 1.904      ;
-; -1.234 ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 1.000        ; 0.000      ; 1.901      ;
-; -0.906 ; mudar_jogo:mudar_jogo|coluna2[0]               ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 1.000        ; 0.523      ; 2.096      ;
-; 2.004  ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 0.500        ; 4.187      ; 2.726      ;
-; 2.504  ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 1.000        ; 4.187      ; 2.726      ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'tratar_botao:tratar_botao_mudar_jogo|estado.11'                                                                                                                                                                 ;
++--------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                        ; To Node                          ; Launch Clock                                   ; Latch Clock                                    ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
+; -2.477 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[6] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 3.144      ;
+; -2.457 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 3.124      ;
+; -2.309 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna3[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.976      ;
+; -2.204 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna4[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.871      ;
+; -2.134 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna4[6] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.801      ;
+; -1.956 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.623      ;
+; -1.922 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna3[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.589      ;
+; -1.502 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna3[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.169      ;
+; -1.498 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|jogo[1]    ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 2.165      ;
+; -1.324 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna3[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 1.991      ;
+; -1.323 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|jogo[1]    ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 1.990      ;
+; -1.322 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna5[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 1.000        ; 0.000      ; 1.989      ;
++--------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'tratar_botao:tratar_botao_mudar_jogo|debouncer'                                                                                                                                                           ;
-+--------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
-; Slack  ; From Node                  ; To Node                          ; Launch Clock                                   ; Latch Clock                                    ; Relationship ; Clock Skew ; Data Delay ;
-+--------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
-; -1.357 ; mudar_jogo:mudar_jogo|jogo ; mudar_jogo:mudar_jogo|coluna2[0] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 1.000        ; 0.000      ; 2.024      ;
-; -1.214 ; mudar_jogo:mudar_jogo|jogo ; mudar_jogo:mudar_jogo|jogo       ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 1.000        ; 0.000      ; 1.881      ;
-+--------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'ligado'                                                                                                                                                                                            ;
++-------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                                                 ; Launch Clock                                   ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
+; 1.214 ; mudar_jogo:mudar_jogo|jogo[1]    ; controlador_principal:controlador|coluna2_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.653      ; 2.063      ;
+; 1.327 ; mudar_jogo:mudar_jogo|coluna4[5] ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.514      ; 2.204      ;
+; 1.352 ; mudar_jogo:mudar_jogo|coluna5[5] ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.654      ; 2.310      ;
+; 1.398 ; mudar_jogo:mudar_jogo|coluna4[3] ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.636      ; 1.897      ;
+; 1.606 ; mudar_jogo:mudar_jogo|coluna4[6] ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.638      ; 2.032      ;
+; 1.612 ; mudar_jogo:mudar_jogo|coluna3[1] ; controlador_principal:controlador|coluna3_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 4.658      ; 2.051      ;
+; 1.657 ; mudar_jogo:mudar_jogo|coluna5[5] ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 5.193      ; 2.307      ;
+; 2.025 ; mudar_jogo:mudar_jogo|coluna3[5] ; controlador_principal:controlador|coluna3_jogo_salvo[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 5.067      ; 1.873      ;
+; 2.091 ; mudar_jogo:mudar_jogo|coluna4[3] ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 5.169      ; 1.892      ;
+; 2.158 ; mudar_jogo:mudar_jogo|coluna3[1] ; controlador_principal:controlador|coluna2_jogo_salvo[4] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 5.194      ; 1.511      ;
+; 2.181 ; mudar_jogo:mudar_jogo|coluna4[6] ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; 0.500        ; 5.178      ; 1.491      ;
++-------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'modulo_clock:comb_3|saida'                                                                                                                                                                                              ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
-; Slack  ; From Node                                      ; To Node                                        ; Launch Clock                                   ; Latch Clock               ; Relationship ; Clock Skew ; Data Delay ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
-; -2.058 ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 0.000        ; 4.187      ; 2.726      ;
-; -1.558 ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; -0.500       ; 4.187      ; 2.726      ;
-; 1.352  ; mudar_jogo:mudar_jogo|coluna2[0]               ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 0.000        ; 0.523      ; 2.096      ;
-; 1.680  ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.901      ;
-; 1.683  ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.904      ;
-; 1.683  ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.904      ;
-; 1.875  ; mudar_jogo:mudar_jogo|jogo                     ; matriz:matriz|linhas[0]                        ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida ; 0.000        ; 0.523      ; 2.619      ;
-; 1.936  ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.157      ;
-; 1.943  ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|estado[1] ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.164      ;
-; 1.946  ; tratar_botao:tratar_botao_mudar_jogo|estado[0] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.167      ;
-; 2.131  ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.352      ;
-; 2.253  ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.474      ;
-; 2.259  ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.480      ;
-; 2.262  ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.483      ;
-; 2.264  ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.485      ;
-; 2.269  ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.490      ;
-; 2.272  ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.493      ;
-; 2.272  ; matriz:matriz|contador[2]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.493      ;
-; 2.426  ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[0]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.647      ;
-; 2.547  ; matriz:matriz|contador[0]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.768      ;
-; 2.620  ; matriz:matriz|contador[2]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.841      ;
-; 2.637  ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.858      ;
-; 2.638  ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.859      ;
-; 2.639  ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.860      ;
-; 2.639  ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.860      ;
-; 2.763  ; matriz:matriz|contador[1]                      ; matriz:matriz|contador[1]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.984      ;
-; 2.764  ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.985      ;
-; 2.765  ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.986      ;
-; 2.770  ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[3]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.991      ;
-; 2.772  ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.993      ;
-; 2.859  ; matriz:matriz|contador[0]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.080      ;
-; 2.881  ; matriz:matriz|contador[1]                      ; matriz:matriz|linhas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.102      ;
-; 2.927  ; matriz:matriz|contador[2]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.148      ;
-; 3.186  ; matriz:matriz|contador[0]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.407      ;
-; 3.550  ; matriz:matriz|contador[1]                      ; matriz:matriz|contador[2]                      ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.771      ;
-; 3.703  ; matriz:matriz|contador[1]                      ; matriz:matriz|colunas[4]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.924      ;
-+--------+------------------------------------------------+------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'ligado'                                                                                                                                                                                              ;
++--------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                        ; To Node                                                 ; Launch Clock                                   ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
+; -3.187 ; mudar_jogo:mudar_jogo|coluna4[6] ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 5.178      ; 1.491      ;
+; -3.183 ; mudar_jogo:mudar_jogo|coluna3[1] ; controlador_principal:controlador|coluna2_jogo_salvo[4] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 5.194      ; 1.511      ;
+; -2.777 ; mudar_jogo:mudar_jogo|coluna4[3] ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 5.169      ; 1.892      ;
+; -2.694 ; mudar_jogo:mudar_jogo|coluna3[5] ; controlador_principal:controlador|coluna3_jogo_salvo[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 5.067      ; 1.873      ;
+; -2.386 ; mudar_jogo:mudar_jogo|coluna5[5] ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 5.193      ; 2.307      ;
+; -2.239 ; mudar_jogo:mudar_jogo|coluna4[3] ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.636      ; 1.897      ;
+; -2.107 ; mudar_jogo:mudar_jogo|coluna3[1] ; controlador_principal:controlador|coluna3_jogo_salvo[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.658      ; 2.051      ;
+; -2.106 ; mudar_jogo:mudar_jogo|coluna4[6] ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.638      ; 2.032      ;
+; -2.090 ; mudar_jogo:mudar_jogo|jogo[1]    ; controlador_principal:controlador|coluna2_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.653      ; 2.063      ;
+; -1.844 ; mudar_jogo:mudar_jogo|coluna5[5] ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.654      ; 2.310      ;
+; -1.810 ; mudar_jogo:mudar_jogo|coluna4[5] ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado      ; -0.500       ; 4.514      ; 2.204      ;
++--------+----------------------------------+---------------------------------------------------------+------------------------------------------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -365,47 +439,47 @@ No paths to report.
 +--------+----------------------------------+----------------------------------+---------------------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                        ; To Node                          ; Launch Clock              ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+----------------------------------+----------------------------------+---------------------------+-------------+--------------+------------+------------+
-; -1.104 ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida ; clock       ; 0.000        ; 3.348      ; 2.841      ;
-; -0.604 ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida ; clock       ; -0.500       ; 3.348      ; 2.841      ;
+; -1.080 ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida ; clock       ; 0.000        ; 3.348      ; 2.865      ;
+; -0.580 ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida        ; modulo_clock:comb_3|saida ; clock       ; -0.500       ; 3.348      ; 2.865      ;
 ; 2.127  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.348      ;
-; 2.141  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[8]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.362      ;
-; 2.143  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.364      ;
+; 2.142  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[8]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.363      ;
+; 2.143  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.364      ;
 ; 2.144  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.365      ;
-; 2.144  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.365      ;
-; 2.144  ; modulo_clock:comb_3|contador[15] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.365      ;
 ; 2.145  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[0]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.366      ;
+; 2.145  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.366      ;
+; 2.145  ; modulo_clock:comb_3|contador[15] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.366      ;
 ; 2.233  ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.454      ;
 ; 2.239  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[3]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.460      ;
 ; 2.240  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[2]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.461      ;
 ; 2.248  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.469      ;
-; 2.248  ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.469      ;
+; 2.249  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.470      ;
 ; 2.250  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[1]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.471      ;
 ; 2.251  ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[4]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.472      ;
 ; 2.260  ; modulo_clock:comb_3|contador[13] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.481      ;
-; 2.262  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.483      ;
+; 2.262  ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 2.483      ;
 ; 2.959  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.180      ;
-; 2.973  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.194      ;
-; 2.975  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.196      ;
-; 2.976  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.197      ;
+; 2.974  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.195      ;
+; 2.975  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.196      ;
 ; 2.977  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[1]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.198      ;
+; 2.977  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.198      ;
 ; 3.070  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.291      ;
-; 3.072  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.293      ;
-; 3.084  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.305      ;
-; 3.086  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.307      ;
-; 3.087  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.308      ;
+; 3.074  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.295      ;
+; 3.085  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.306      ;
+; 3.086  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.307      ;
 ; 3.088  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[2]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.309      ;
+; 3.088  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.309      ;
 ; 3.173  ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.394      ;
 ; 3.179  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[4]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.400      ;
-; 3.188  ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.409      ;
 ; 3.188  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.409      ;
 ; 3.190  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[2]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.411      ;
 ; 3.191  ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.412      ;
-; 3.195  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.416      ;
-; 3.198  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.419      ;
+; 3.196  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.417      ;
+; 3.197  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.418      ;
 ; 3.200  ; modulo_clock:comb_3|contador[13] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.421      ;
+; 3.202  ; modulo_clock:comb_3|contador[14] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.423      ;
 ; 3.290  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.511      ;
 ; 3.302  ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.523      ;
-; 3.306  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.527      ;
+; 3.307  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.528      ;
 ; 3.311  ; modulo_clock:comb_3|contador[13] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.532      ;
 ; 3.401  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.622      ;
 ; 3.413  ; modulo_clock:comb_3|contador[4]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.634      ;
@@ -414,19 +488,19 @@ No paths to report.
 ; 3.501  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.722      ;
 ; 3.501  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.722      ;
 ; 3.501  ; modulo_clock:comb_3|contador[2]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.722      ;
-; 3.508  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.729      ;
+; 3.510  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.731      ;
+; 3.510  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.731      ;
+; 3.510  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.731      ;
 ; 3.512  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.733      ;
-; 3.523  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.744      ;
-; 3.523  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.744      ;
-; 3.523  ; modulo_clock:comb_3|contador[12] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.744      ;
-; 3.555  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.776      ;
-; 3.555  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.776      ;
-; 3.555  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.776      ;
+; 3.514  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.735      ;
 ; 3.557  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[3]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
 ; 3.557  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[4]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
 ; 3.557  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
 ; 3.557  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
 ; 3.557  ; modulo_clock:comb_3|contador[0]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
+; 3.557  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
+; 3.557  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
+; 3.557  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.778      ;
 ; 3.642  ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.863      ;
 ; 3.642  ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.863      ;
 ; 3.642  ; modulo_clock:comb_3|contador[11] ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.863      ;
@@ -435,26 +509,27 @@ No paths to report.
 ; 3.659  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[5]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.880      ;
 ; 3.659  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[6]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.880      ;
 ; 3.659  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|contador[7]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.880      ;
-; 3.667  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.888      ;
-; 3.667  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.888      ;
-; 3.667  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.888      ;
-; 3.775  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.996      ;
-; 3.775  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.996      ;
-; 3.775  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.996      ;
+; 3.666  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.887      ;
+; 3.666  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.887      ;
+; 3.666  ; modulo_clock:comb_3|contador[9]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.887      ;
+; 3.776  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.997      ;
+; 3.776  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.997      ;
+; 3.776  ; modulo_clock:comb_3|contador[8]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 3.997      ;
 ; 3.795  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.016      ;
 ; 3.795  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.016      ;
 ; 3.795  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.016      ;
+; 3.807  ; modulo_clock:comb_3|contador[10] ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.028      ;
 ; 3.808  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[8]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.029      ;
 ; 3.808  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.029      ;
 ; 3.808  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.029      ;
 ; 3.808  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[11] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.029      ;
 ; 3.808  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|contador[12] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.029      ;
-; 3.846  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.067      ;
-; 3.873  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.094      ;
+; 3.841  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.062      ;
+; 3.852  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.073      ;
+; 3.911  ; modulo_clock:comb_3|contador[1]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.132      ;
 ; 3.920  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.141      ;
 ; 3.920  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.141      ;
 ; 3.920  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.141      ;
-; 3.932  ; modulo_clock:comb_3|contador[3]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.153      ;
 ; 3.933  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[8]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.154      ;
 ; 3.933  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[9]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.154      ;
 ; 3.933  ; modulo_clock:comb_3|contador[5]  ; modulo_clock:comb_3|contador[10] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.154      ;
@@ -463,19 +538,136 @@ No paths to report.
 ; 4.038  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[13] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.259      ;
 ; 4.038  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[14] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.259      ;
 ; 4.038  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[15] ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.259      ;
-; 4.044  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.265      ;
-; 4.051  ; modulo_clock:comb_3|contador[6]  ; modulo_clock:comb_3|contador[8]  ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.272      ;
+; 4.050  ; modulo_clock:comb_3|contador[7]  ; modulo_clock:comb_3|saida        ; clock                     ; clock       ; 0.000        ; 0.000      ; 4.271      ;
 +--------+----------------------------------+----------------------------------+---------------------------+-------------+--------------+------------+------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'tratar_botao:tratar_botao_mudar_jogo|debouncer'                                                                                                                                                           ;
-+-------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
-; Slack ; From Node                  ; To Node                          ; Launch Clock                                   ; Latch Clock                                    ; Relationship ; Clock Skew ; Data Delay ;
-+-------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
-; 1.660 ; mudar_jogo:mudar_jogo|jogo ; mudar_jogo:mudar_jogo|jogo       ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 0.000        ; 0.000      ; 1.881      ;
-; 1.803 ; mudar_jogo:mudar_jogo|jogo ; mudar_jogo:mudar_jogo|coluna2[0] ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 0.000        ; 0.000      ; 2.024      ;
-+-------+----------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'modulo_clock:comb_3|saida'                                                                                                                                                                                                       ;
++-------+---------------------------------------------------------+-------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
+; Slack ; From Node                                               ; To Node                                         ; Launch Clock                                   ; Latch Clock               ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------------------------+-------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
+; 1.686 ; tratar_botao:tratar_botao_mudar_jogo|estado.01          ; tratar_botao:tratar_botao_mudar_jogo|estado.01  ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.907      ;
+; 1.686 ; tratar_botao:tratar_botao_salvar_jogo|estado.01         ; tratar_botao:tratar_botao_salvar_jogo|estado.01 ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.907      ;
+; 1.686 ; tratar_botao:tratar_botao_salvar_jogo|estado.01         ; tratar_botao:tratar_botao_salvar_jogo|estado.11 ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.907      ;
+; 1.687 ; tratar_botao:tratar_botao_mudar_jogo|estado.01          ; tratar_botao:tratar_botao_mudar_jogo|estado.11  ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 1.908      ;
+; 1.738 ; ligado                                                  ; matriz:matriz|linhas[2]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 5.621      ;
+; 1.979 ; matriz:matriz|colunas[4]                                ; matriz:matriz|colunas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.200      ;
+; 2.002 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.223      ;
+; 2.111 ; matriz:matriz|contador[1]                               ; matriz:matriz|contador[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.332      ;
+; 2.196 ; ligado                                                  ; matriz:matriz|linhas[4]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 6.079      ;
+; 2.212 ; ligado                                                  ; matriz:matriz|linhas[3]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 6.095      ;
+; 2.238 ; ligado                                                  ; matriz:matriz|linhas[2]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 5.621      ;
+; 2.575 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.796      ;
+; 2.583 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.804      ;
+; 2.586 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[2]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.807      ;
+; 2.597 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.818      ;
+; 2.611 ; ligado                                                  ; matriz:matriz|linhas[6]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 6.494      ;
+; 2.665 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 2.886      ;
+; 2.696 ; ligado                                                  ; matriz:matriz|linhas[4]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 6.079      ;
+; 2.712 ; ligado                                                  ; matriz:matriz|linhas[3]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 6.095      ;
+; 2.809 ; matriz:matriz|contador[1]                               ; matriz:matriz|colunas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.030      ;
+; 2.879 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.100      ;
+; 2.879 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[2]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.100      ;
+; 2.879 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.100      ;
+; 2.879 ; matriz:matriz|contador[2]                               ; matriz:matriz|colunas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.100      ;
+; 2.911 ; ligado                                                  ; matriz:matriz|linhas[0]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 6.794      ;
+; 2.924 ; ligado                                                  ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 6.807      ;
+; 2.990 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.211      ;
+; 2.994 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[4]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.215      ;
+; 3.004 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[2]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.225      ;
+; 3.034 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[2]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 3.268      ;
+; 3.111 ; ligado                                                  ; matriz:matriz|linhas[6]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 6.494      ;
+; 3.141 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[1]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.362      ;
+; 3.190 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[1]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.411      ;
+; 3.240 ; ligado                                                  ; matriz:matriz|linhas[5]                         ; ligado                                         ; modulo_clock:comb_3|saida ; 0.000        ; 3.662      ; 7.123      ;
+; 3.298 ; matriz:matriz|contador[1]                               ; matriz:matriz|contador[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.519      ;
+; 3.342 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[3]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.563      ;
+; 3.375 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[5]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.596      ;
+; 3.411 ; ligado                                                  ; matriz:matriz|linhas[0]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 6.794      ;
+; 3.424 ; ligado                                                  ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 6.807      ;
+; 3.449 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[0]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.670      ;
+; 3.450 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[3]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.671      ;
+; 3.450 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[2]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.671      ;
+; 3.452 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[4]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.673      ;
+; 3.452 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[2]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.673      ;
+; 3.464 ; matriz:matriz|contador[0]                               ; matriz:matriz|colunas[1]                        ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.685      ;
+; 3.501 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[0]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.722      ;
+; 3.617 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[3]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.838      ;
+; 3.652 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[2]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 3.873      ;
+; 3.740 ; ligado                                                  ; matriz:matriz|linhas[5]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; 3.662      ; 7.123      ;
+; 3.850 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[1]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.071      ;
+; 3.851 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[6]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.072      ;
+; 3.862 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[5]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.083      ;
+; 3.863 ; matriz:matriz|contador[2]                               ; matriz:matriz|linhas[4]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.084      ;
+; 3.865 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[0]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.086      ;
+; 4.029 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[6]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.263      ;
+; 4.042 ; matriz:matriz|contador[2]                               ; matriz:matriz|contador[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.263      ;
+; 4.077 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[4]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.298      ;
+; 4.126 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[3]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.347      ;
+; 4.149 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[6]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.370      ;
+; 4.264 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[0]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.485      ;
+; 4.318 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[1]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.552      ;
+; 4.336 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[6]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.557      ;
+; 4.345 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[3]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.579      ;
+; 4.453 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[4]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.687      ;
+; 4.461 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[5]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.695      ;
+; 4.506 ; matriz:matriz|contador[1]                               ; matriz:matriz|linhas[5]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.727      ;
+; 4.582 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[6]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.816      ;
+; 4.668 ; matriz:matriz|contador[0]                               ; matriz:matriz|linhas[1]                         ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 4.889      ;
+; 4.683 ; mudar_jogo:mudar_jogo|coluna3[1]                        ; matriz:matriz|linhas[1]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.917      ;
+; 4.727 ; mudar_jogo:mudar_jogo|coluna5[5]                        ; matriz:matriz|linhas[0]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.961      ;
+; 4.737 ; mudar_jogo:mudar_jogo|coluna3[5]                        ; matriz:matriz|linhas[5]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 4.971      ;
+; 4.916 ; matriz:matriz|contador[0]                               ; matriz:matriz|contador[0]                       ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida ; 0.000        ; 0.000      ; 5.137      ;
+; 4.995 ; mudar_jogo:mudar_jogo|coluna4[3]                        ; matriz:matriz|linhas[0]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.229      ;
+; 5.111 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[5]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.345      ;
+; 5.136 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[1]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.370      ;
+; 5.211 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[3]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.445      ;
+; 5.299 ; mudar_jogo:mudar_jogo|jogo[1]                           ; matriz:matriz|linhas[0]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.533      ;
+; 5.390 ; mudar_jogo:mudar_jogo|coluna3[1]                        ; matriz:matriz|linhas[4]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.624      ;
+; 5.445 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[4]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.679      ;
+; 5.473 ; mudar_jogo:mudar_jogo|coluna4[5]                        ; matriz:matriz|linhas[5]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.707      ;
+; 5.719 ; mudar_jogo:mudar_jogo|coluna4[6]                        ; matriz:matriz|linhas[3]                         ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida ; 0.000        ; 0.013      ; 5.953      ;
+; 7.652 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[2]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.623     ; 2.750      ;
+; 8.182 ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; matriz:matriz|linhas[6]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.625     ; 3.278      ;
+; 8.526 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[3]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.501     ; 3.746      ;
+; 8.760 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[4]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.501     ; 3.980      ;
+; 8.788 ; controlador_principal:controlador|coluna3_jogo_salvo[3] ; matriz:matriz|linhas[5]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.501     ; 4.008      ;
+; 8.828 ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; matriz:matriz|linhas[4]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.180     ; 3.369      ;
+; 8.836 ; controlador_principal:controlador|coluna1_jogo_salvo[4] ; matriz:matriz|linhas[5]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.180     ; 3.377      ;
+; 8.908 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.623     ; 4.006      ;
+; 9.180 ; controlador_principal:controlador|coluna5_jogo_salvo[0] ; matriz:matriz|linhas[0]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.623     ; 4.278      ;
+; 9.369 ; controlador_principal:controlador|coluna2_jogo_salvo[0] ; matriz:matriz|linhas[0]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.640     ; 4.450      ;
+; 9.486 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[6]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.165     ; 4.042      ;
+; 9.548 ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; matriz:matriz|linhas[3]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.156     ; 4.113      ;
+; 9.604 ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; matriz:matriz|linhas[6]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.641     ; 4.684      ;
+; 9.624 ; controlador_principal:controlador|coluna3_jogo_salvo[1] ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.645     ; 4.700      ;
+; 9.749 ; controlador_principal:controlador|coluna1_jogo_salvo[0] ; matriz:matriz|linhas[0]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.641     ; 4.829      ;
+; 9.779 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[5]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.165     ; 4.335      ;
+; 9.804 ; controlador_principal:controlador|coluna1_jogo_salvo[1] ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.165     ; 4.360      ;
+; 9.857 ; controlador_principal:controlador|coluna2_jogo_salvo[1] ; matriz:matriz|linhas[1]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -5.156     ; 4.422      ;
+; 9.872 ; controlador_principal:controlador|coluna2_jogo_salvo[3] ; matriz:matriz|linhas[3]                         ; ligado                                         ; modulo_clock:comb_3|saida ; -0.500       ; -4.625     ; 4.968      ;
++-------+---------------------------------------------------------+-------------------------------------------------+------------------------------------------------+---------------------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'tratar_botao:tratar_botao_mudar_jogo|estado.11'                                                                                                                                                                 ;
++-------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                          ; Launch Clock                                   ; Latch Clock                                    ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
+; 1.768 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna5[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 1.989      ;
+; 1.769 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|jogo[1]    ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 1.990      ;
+; 1.770 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna3[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 1.991      ;
+; 1.944 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|jogo[1]    ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.165      ;
+; 1.948 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna3[1] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.169      ;
+; 2.368 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna3[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.589      ;
+; 2.402 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[3] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.623      ;
+; 2.580 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna4[6] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.801      ;
+; 2.650 ; mudar_jogo:mudar_jogo|coluna5[5] ; mudar_jogo:mudar_jogo|coluna4[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.871      ;
+; 2.755 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna3[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 2.976      ;
+; 2.903 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[5] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 3.124      ;
+; 2.923 ; mudar_jogo:mudar_jogo|jogo[1]    ; mudar_jogo:mudar_jogo|coluna4[6] ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 0.000        ; 0.000      ; 3.144      ;
++-------+----------------------------------+----------------------------------+------------------------------------------------+------------------------------------------------+--------------+------------+------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------+
@@ -485,9 +677,11 @@ No paths to report.
 +------------------------------------------------+------------------------------------------------+----------+----------+----------+----------+
 ; clock                                          ; clock                                          ; 248      ; 0        ; 0        ; 0        ;
 ; modulo_clock:comb_3|saida                      ; clock                                          ; 1        ; 1        ; 0        ; 0        ;
-; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida                      ; 46       ; 0        ; 0        ; 0        ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; 3        ; 1        ; 0        ; 0        ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 2        ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado                                         ; 0        ; 0        ; 11       ; 0        ;
+; ligado                                         ; modulo_clock:comb_3|saida                      ; 25       ; 51       ; 0        ; 0        ;
+; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida                      ; 78       ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida                      ; 26       ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 12       ; 0        ; 0        ; 0        ;
 +------------------------------------------------+------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -499,9 +693,11 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------------------------------------------+------------------------------------------------+----------+----------+----------+----------+
 ; clock                                          ; clock                                          ; 248      ; 0        ; 0        ; 0        ;
 ; modulo_clock:comb_3|saida                      ; clock                                          ; 1        ; 1        ; 0        ; 0        ;
-; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida                      ; 46       ; 0        ; 0        ; 0        ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; modulo_clock:comb_3|saida                      ; 3        ; 1        ; 0        ; 0        ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; 2        ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; ligado                                         ; 0        ; 0        ; 11       ; 0        ;
+; ligado                                         ; modulo_clock:comb_3|saida                      ; 25       ; 51       ; 0        ; 0        ;
+; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida                      ; 78       ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; modulo_clock:comb_3|saida                      ; 26       ; 0        ; 0        ; 0        ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; 12       ; 0        ; 0        ; 0        ;
 +------------------------------------------------+------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -525,10 +721,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 1     ; 1    ;
-; Unconstrained Input Port Paths  ; 3     ; 3    ;
-; Unconstrained Output Ports      ; 6     ; 6    ;
-; Unconstrained Output Port Paths ; 6     ; 6    ;
+; Unconstrained Input Ports       ; 3     ; 3    ;
+; Unconstrained Input Port Paths  ; 11    ; 11   ;
+; Unconstrained Output Ports      ; 12    ; 12   ;
+; Unconstrained Output Port Paths ; 12    ; 12   ;
 +---------------------------------+-------+------+
 
 
@@ -538,18 +734,21 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Target                                         ; Clock                                          ; Type ; Status      ;
 +------------------------------------------------+------------------------------------------------+------+-------------+
 ; clock                                          ; clock                                          ; Base ; Constrained ;
+; ligado                                         ; ligado                                         ; Base ; Constrained ;
 ; modulo_clock:comb_3|saida                      ; modulo_clock:comb_3|saida                      ; Base ; Constrained ;
-; tratar_botao:tratar_botao_mudar_jogo|debouncer ; tratar_botao:tratar_botao_mudar_jogo|debouncer ; Base ; Constrained ;
+; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; tratar_botao:tratar_botao_mudar_jogo|estado.11 ; Base ; Constrained ;
 +------------------------------------------------+------------------------------------------------+------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                               ;
-+------------------+--------------------------------------------------------------------------------------+
-; Input Port       ; Comment                                                                              ;
-+------------------+--------------------------------------------------------------------------------------+
-; botao_mudar_jogo ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------------+--------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                ;
++-------------------+--------------------------------------------------------------------------------------+
+; Input Port        ; Comment                                                                              ;
++-------------------+--------------------------------------------------------------------------------------+
+; botao_mudar_jogo  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; botao_salvar_jogo ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; modo              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------+--------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -563,16 +762,24 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; colunas[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; colunas[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; linhas[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                               ;
-+------------------+--------------------------------------------------------------------------------------+
-; Input Port       ; Comment                                                                              ;
-+------------------+--------------------------------------------------------------------------------------+
-; botao_mudar_jogo ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------------+--------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                ;
++-------------------+--------------------------------------------------------------------------------------+
+; Input Port        ; Comment                                                                              ;
++-------------------+--------------------------------------------------------------------------------------+
+; botao_mudar_jogo  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; botao_salvar_jogo ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; modo              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------+--------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -586,6 +793,12 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; colunas[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; colunas[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; linhas[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; linhas[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
@@ -595,7 +808,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed Nov 29 16:47:50 2023
+    Info: Processing started: Mon Dec  4 22:32:19 2023
 Info: Command: quartus_sta p2_03 -c p2_03
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -604,41 +817,46 @@ Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
+Warning (335093): The Timing Analyzer is analyzing 11 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'p2_03.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name modulo_clock:comb_3|saida modulo_clock:comb_3|saida
     Info (332105): create_clock -period 1.000 -name clock clock
-    Info (332105): create_clock -period 1.000 -name tratar_botao:tratar_botao_mudar_jogo|debouncer tratar_botao:tratar_botao_mudar_jogo|debouncer
+    Info (332105): create_clock -period 1.000 -name tratar_botao:tratar_botao_mudar_jogo|estado.11 tratar_botao:tratar_botao_mudar_jogo|estado.11
+    Info (332105): create_clock -period 1.000 -name ligado ligado
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -4.288
+Info (332146): Worst-case setup slack is -9.517
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.288             -59.245 clock 
-    Info (332119):    -3.257             -31.078 modulo_clock:comb_3|saida 
-    Info (332119):    -1.357              -2.571 tratar_botao:tratar_botao_mudar_jogo|debouncer 
-Info (332146): Worst-case hold slack is -2.058
+    Info (332119):    -9.517             -98.195 modulo_clock:comb_3|saida 
+    Info (332119):    -4.269             -59.226 clock 
+    Info (332119):    -2.477             -13.521 tratar_botao:tratar_botao_mudar_jogo|estado.11 
+    Info (332119):     1.214               0.000 ligado 
+Info (332146): Worst-case hold slack is -3.187
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.058              -2.058 modulo_clock:comb_3|saida 
-    Info (332119):    -1.104              -1.104 clock 
-    Info (332119):     1.660               0.000 tratar_botao:tratar_botao_mudar_jogo|debouncer 
+    Info (332119):    -3.187             -26.423 ligado 
+    Info (332119):    -1.080              -1.080 clock 
+    Info (332119):     1.686               0.000 modulo_clock:comb_3|saida 
+    Info (332119):     1.768               0.000 tratar_botao:tratar_botao_mudar_jogo|estado.11 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):    -2.289              -2.289 clock 
+    Info (332119):    -2.289              -2.289 ligado 
     Info (332119):     0.234               0.000 modulo_clock:comb_3|saida 
-    Info (332119):     0.234               0.000 tratar_botao:tratar_botao_mudar_jogo|debouncer 
+    Info (332119):     0.234               0.000 tratar_botao:tratar_botao_mudar_jogo|estado.11 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4664 megabytes
-    Info: Processing ended: Wed Nov 29 16:47:51 2023
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4667 megabytes
+    Info: Processing ended: Mon Dec  4 22:32:20 2023
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 

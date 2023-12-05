@@ -1,0 +1,18 @@
+
+State Machine - |modulo_principal|tratar_botao:tratar_botao_salvar_jogo|estado
+Name estado.01 estado.11 estado.00 
+estado.00 0 0 0 
+estado.01 1 0 1 
+estado.11 0 1 1 
+
+State Machine - |modulo_principal|tratar_botao:tratar_botao_confirmar_ataque|estado
+Name estado.01 estado.11 estado.00 
+estado.00 0 0 0 
+estado.01 1 0 1 
+estado.11 0 1 1 
+
+State Machine - |modulo_principal|tratar_botao:tratar_botao_mudar_jogo|estado
+Name estado.01 estado.11 estado.00 
+estado.00 0 0 0 
+estado.01 1 0 1 
+estado.11 0 1 1 
