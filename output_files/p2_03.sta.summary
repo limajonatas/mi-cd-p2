@@ -3,42 +3,42 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'modulo_clock:comb_3|saida'
-Slack : -9.517
-TNS   : -98.195
+Slack : -9.286
+TNS   : -95.766
 
 Type  : Setup 'clock'
-Slack : -4.269
-TNS   : -59.226
+Slack : -4.407
+TNS   : -59.364
 
 Type  : Setup 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
-Slack : -2.477
-TNS   : -13.521
+Slack : -2.794
+TNS   : -15.373
 
-Type  : Setup 'ligado'
-Slack : 1.214
+Type  : Setup 'modo'
+Slack : 1.224
 TNS   : 0.000
 
-Type  : Hold 'ligado'
-Slack : -3.187
-TNS   : -26.423
+Type  : Hold 'modo'
+Slack : -3.223
+TNS   : -31.186
 
 Type  : Hold 'clock'
-Slack : -1.080
-TNS   : -1.080
+Slack : -1.104
+TNS   : -1.104
 
 Type  : Hold 'modulo_clock:comb_3|saida'
-Slack : 1.686
+Slack : 0.628
 TNS   : 0.000
 
 Type  : Hold 'tratar_botao:tratar_botao_mudar_jogo|estado.11'
-Slack : 1.768
+Slack : 1.813
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'clock'
 Slack : -2.289
 TNS   : -2.289
 
-Type  : Minimum Pulse Width 'ligado'
+Type  : Minimum Pulse Width 'modo'
 Slack : -2.289
 TNS   : -2.289
 

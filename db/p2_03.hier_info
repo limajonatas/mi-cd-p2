@@ -23,6 +23,7 @@ linhas[3] << matriz:matriz.linhas
 linhas[4] << matriz:matriz.linhas
 linhas[5] << matriz:matriz.linhas
 linhas[6] << matriz:matriz.linhas
+led << controlador_principal:controlador.led
 
 
 |modulo_principal|modulo_clock:comb_3
@@ -47,25 +48,25 @@ clock_saida <= saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |modulo_principal|tratar_botao:tratar_botao_mudar_jogo
-botao => estado.OUTPUTSELECT
-botao => estado.OUTPUTSELECT
 botao => estado.00.DATAIN
+botao => estado.OUTPUTSELECT
+botao => estado.OUTPUTSELECT
 clock => estado~2.DATAIN
 botao_saida <= botao_saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |modulo_principal|tratar_botao:tratar_botao_confirmar_ataque
-botao => estado.OUTPUTSELECT
-botao => estado.OUTPUTSELECT
 botao => estado.00.DATAIN
+botao => estado.OUTPUTSELECT
+botao => estado.OUTPUTSELECT
 clock => estado~2.DATAIN
 botao_saida <= botao_saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |modulo_principal|tratar_botao:tratar_botao_salvar_jogo
-botao => estado.OUTPUTSELECT
-botao => estado.OUTPUTSELECT
 botao => estado.00.DATAIN
+botao => estado.OUTPUTSELECT
+botao => estado.OUTPUTSELECT
 clock => estado~2.DATAIN
 botao_saida <= botao_saida.DB_MAX_OUTPUT_PORT_TYPE
 
@@ -181,7 +182,7 @@ modo => coluna5_saida.OUTPUTSELECT
 modo => coluna5_saida.OUTPUTSELECT
 modo => coluna5_saida.OUTPUTSELECT
 modo => coluna5_saida.OUTPUTSELECT
-modo => coluna5_jogo_salvo[1].IN0
+modo => coluna1_jogo_salvo[6].IN0
 ligado => coluna1_saida.OUTPUTSELECT
 ligado => coluna1_saida.OUTPUTSELECT
 ligado => coluna1_saida.OUTPUTSELECT
@@ -217,8 +218,42 @@ ligado => coluna5_saida.OUTPUTSELECT
 ligado => coluna5_saida.OUTPUTSELECT
 ligado => coluna5_saida.OUTPUTSELECT
 ligado => coluna5_saida.OUTPUTSELECT
-ligado => coluna5_jogo_salvo[1].IN1
-salvar_jogo => coluna5_jogo_salvo[1].IN1
+ligado => coluna1_jogo_salvo[6].PRESET
+ligado => coluna1_jogo_salvo[5].PRESET
+ligado => coluna1_jogo_salvo[4].PRESET
+ligado => coluna1_jogo_salvo[3].PRESET
+ligado => coluna1_jogo_salvo[2].PRESET
+ligado => coluna1_jogo_salvo[1].PRESET
+ligado => coluna1_jogo_salvo[0].PRESET
+ligado => coluna2_jogo_salvo[6].PRESET
+ligado => coluna2_jogo_salvo[5].PRESET
+ligado => coluna2_jogo_salvo[4].PRESET
+ligado => coluna2_jogo_salvo[3].PRESET
+ligado => coluna2_jogo_salvo[2].PRESET
+ligado => coluna2_jogo_salvo[1].PRESET
+ligado => coluna2_jogo_salvo[0].PRESET
+ligado => coluna3_jogo_salvo[6].PRESET
+ligado => coluna3_jogo_salvo[5].PRESET
+ligado => coluna3_jogo_salvo[4].PRESET
+ligado => coluna3_jogo_salvo[3].PRESET
+ligado => coluna3_jogo_salvo[2].PRESET
+ligado => coluna3_jogo_salvo[1].PRESET
+ligado => coluna3_jogo_salvo[0].PRESET
+ligado => coluna4_jogo_salvo[6].PRESET
+ligado => coluna4_jogo_salvo[5].PRESET
+ligado => coluna4_jogo_salvo[4].PRESET
+ligado => coluna4_jogo_salvo[3].PRESET
+ligado => coluna4_jogo_salvo[2].PRESET
+ligado => coluna4_jogo_salvo[1].PRESET
+ligado => coluna4_jogo_salvo[0].PRESET
+ligado => coluna5_jogo_salvo[6].PRESET
+ligado => coluna5_jogo_salvo[5].PRESET
+ligado => coluna5_jogo_salvo[4].PRESET
+ligado => coluna5_jogo_salvo[3].PRESET
+ligado => coluna5_jogo_salvo[2].PRESET
+ligado => coluna5_jogo_salvo[1].PRESET
+ligado => coluna5_jogo_salvo[0].PRESET
+salvar_jogo => coluna1_jogo_salvo[6].IN1
 confirmar_ataque => ~NO_FANOUT~
 ataque_colunas[0] => ~NO_FANOUT~
 ataque_colunas[1] => ~NO_FANOUT~
@@ -331,6 +366,7 @@ coluna5_saida[3] <= coluna5_saida.DB_MAX_OUTPUT_PORT_TYPE
 coluna5_saida[4] <= coluna5_saida.DB_MAX_OUTPUT_PORT_TYPE
 coluna5_saida[5] <= coluna5_saida.DB_MAX_OUTPUT_PORT_TYPE
 coluna5_saida[6] <= coluna5_saida.DB_MAX_OUTPUT_PORT_TYPE
+led <= <VCC>
 
 
 |modulo_principal|matriz:matriz
