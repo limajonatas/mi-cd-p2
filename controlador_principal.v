@@ -66,190 +66,219 @@ module controlador_principal(
 				
 					 if(confirmar_ataque && jogo_salvo) begin
 						/*COLUNA 1*/ 
-						if(coluna1_jogo_salvo[0] == 1'b0 && ataque_colunas==UM && ataque_linhas==UM) 
+					   if(coluna1_jogo_salvo[0] == 1'b0 && ataque_colunas==UM && ataque_linhas==UM) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[0] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[1] == 1'b0 && ataque_colunas==UM && ataque_linhas==DOIS) 
+						else 
+						 if(coluna1_jogo_salvo[1] == 1'b0 && ataque_colunas==UM && ataque_linhas==DOIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[1] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[2] == 1'b0 && ataque_colunas==UM && ataque_linhas==TRES) 
+						else 
+						 if(coluna1_jogo_salvo[2] == 1'b0 && ataque_colunas==UM && ataque_linhas==TRES) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[2] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[3] == 1'b0 && ataque_colunas==UM && ataque_linhas==QUATRO) 
+						else 
+						 if(coluna1_jogo_salvo[3] == 1'b0 && ataque_colunas==UM && ataque_linhas==QUATRO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[3] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[4] == 1'b0 && ataque_colunas==UM && ataque_linhas==CINCO) 
+						else 
+						 if(coluna1_jogo_salvo[4] == 1'b0 && ataque_colunas==UM && ataque_linhas==CINCO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[4] <= 1'b0;
-							end
-						else if(coluna1_jogo_salvo[5] == 1'b0 && ataque_colunas==UM && ataque_linhas==SEIS) 
+						 end
+						else 
+						 if(coluna1_jogo_salvo[5] == 1'b0 && ataque_colunas==UM && ataque_linhas==SEIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[5] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[6] == 1'b0 && ataque_colunas==UM && ataque_linhas==SETE) 
+						else 
+						 if(coluna1_jogo_salvo[6] == 1'b0 && ataque_colunas==UM && ataque_linhas==SETE) 
 							begin
 								ledRGB <= 2'b10;
 								coluna1_ataque_bem_sucedido[6] <= 1'b0;
 							end
 							
-													
+					 else							
 						/*COLUNA 2*/ 
 						if(coluna2_jogo_salvo[0] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==UM) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[0] <= 1'b0;
 							end
-						else if(coluna1_jogo_salvo[1] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==DOIS) 
+						else 
+						if(coluna2_jogo_salvo[1] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==DOIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[1] <= 1'b0;
 							end
-						else if(coluna2_jogo_salvo[2] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==TRES) 
+						else
+					  	 if(coluna2_jogo_salvo[2] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==TRES) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[2] <= 1'b0;
 							end
-						else if(coluna2_jogo_salvo[3] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==QUATRO) 
+						else 
+						 if(coluna2_jogo_salvo[3] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==QUATRO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[3] <= 1'b0;
 							end
-						else if(coluna2_jogo_salvo[4] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==CINCO) 
+						else 
+						 if(coluna2_jogo_salvo[4] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==CINCO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[4] <= 1'b0;
 							end
-						else if(coluna2_jogo_salvo[5] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==SEIS) 
+					else 
+					 if(coluna2_jogo_salvo[5] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==SEIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna2_ataque_bem_sucedido[5] <= 1'b0;
 							end
-						else if(coluna2_jogo_salvo[6] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==SETE) 
+						else 
+						 if(coluna2_jogo_salvo[6] == 1'b0 && ataque_colunas==DOIS && ataque_linhas==SETE) 
 							begin
 								ledRGB <= 2'b10;
-								coluna1_ataque_bem_sucedido[6] <= 1'b0;
+								coluna2_ataque_bem_sucedido[6] <= 1'b0;
 							end
 							
 							
-						// 3 //////////////////////////////////////////////////////////////////////////////////
+					else	// 3 //////////////////////////////////////////////////////////////////////////////////
 						/*COLUNA 3*/ 
 						if(coluna3_jogo_salvo[0] == 1'b0 && ataque_colunas==TRES && ataque_linhas==UM) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[0] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[1] == 1'b0 && ataque_colunas==TRES && ataque_linhas==DOIS) 
+						else 
+						 if(coluna3_jogo_salvo[1] == 1'b0 && ataque_colunas==TRES && ataque_linhas==DOIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[1] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[2] == 1'b0 && ataque_colunas==TRES && ataque_linhas==TRES) 
+						else 
+						 if(coluna3_jogo_salvo[2] == 1'b0 && ataque_colunas==TRES && ataque_linhas==TRES) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[2] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[3] == 1'b0 && ataque_colunas==TRES && ataque_linhas==QUATRO) 
+						else 
+						 if(coluna3_jogo_salvo[3] == 1'b0 && ataque_colunas==TRES && ataque_linhas==QUATRO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[3] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[4] == 1'b0 && ataque_colunas==TRES && ataque_linhas==CINCO) 
+						else 
+						 if(coluna3_jogo_salvo[4] == 1'b0 && ataque_colunas==TRES && ataque_linhas==CINCO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[4] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[5] == 1'b0 && ataque_colunas==TRES && ataque_linhas==SEIS) 
+						else 
+						 if(coluna3_jogo_salvo[5] == 1'b0 && ataque_colunas==TRES && ataque_linhas==SEIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[5] <= 1'b0;
 							end
-						else if(coluna3_jogo_salvo[6] == 1'b0 && ataque_colunas==TRES && ataque_linhas==SETE) 
+						else 
+						 if(coluna3_jogo_salvo[6] == 1'b0 && ataque_colunas==TRES && ataque_linhas==SETE) 
 							begin
 								ledRGB <= 2'b10;
 								coluna3_ataque_bem_sucedido[6] <= 1'b0;
 							end	
 						////////////////////////////////////////////////////////////////////////////////////////
 						//4//
-						/*COLUNA 4*/ 
+					else	/*COLUNA 4*/ 
 						if(coluna4_jogo_salvo[0] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==UM) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[0] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[1] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==DOIS) 
+						else 
+						 if(coluna4_jogo_salvo[1] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==DOIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[1] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[2] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==TRES) 
+						else 
+						 if(coluna4_jogo_salvo[2] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==TRES) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[2] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[3] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==QUATRO) 
+						else 
+						 if(coluna4_jogo_salvo[3] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==QUATRO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[3] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[4] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==CINCO) 
+						else 
+						 if(coluna4_jogo_salvo[4] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==CINCO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[4] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[5] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==SEIS) 
+						else
+					   	if(coluna4_jogo_salvo[5] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==SEIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[5] <= 1'b0;
 							end
-						else if(coluna4_jogo_salvo[6] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==SETE) 
+						else 
+						 if(coluna4_jogo_salvo[6] == 1'b0 && ataque_colunas==QUATRO && ataque_linhas==SETE) 
 							begin
 								ledRGB <= 2'b10;
 								coluna4_ataque_bem_sucedido[6] <= 1'b0;
 							end
-						////////////////////////////////////////////////////////////////////////////////////////
-						//5///
+					else	//5///
 						/*COLUNA 1*/ 
 						if(coluna5_jogo_salvo[0] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==UM) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[0] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[1] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==DOIS) 
+						else 
+						 if(coluna5_jogo_salvo[1] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==DOIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[1] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[2] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==TRES) 
+						else 
+						 if(coluna5_jogo_salvo[2] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==TRES) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[2] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[3] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==QUATRO) 
+						else
+					   	if(coluna5_jogo_salvo[3] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==QUATRO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[3] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[4] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==CINCO) 
+						else 
+						 if(coluna5_jogo_salvo[4] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==CINCO) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[4] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[5] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==SEIS) 
+						else 
+						 if(coluna5_jogo_salvo[5] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==SEIS) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[5] <= 1'b0;
 							end
-						else if(coluna5_jogo_salvo[6] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==SETE) 
+						else
+					   	if(coluna5_jogo_salvo[6] == 1'b0 && ataque_colunas==CINCO && ataque_linhas==SETE) 
 							begin
 								ledRGB <= 2'b10;
 								coluna5_ataque_bem_sucedido[6] <= 1'b0;
