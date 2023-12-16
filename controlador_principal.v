@@ -309,6 +309,11 @@ module controlador_principal(
 				coluna3_ataque_bem_sucedido = SETE_ALTOS;
 				coluna4_ataque_bem_sucedido = SETE_ALTOS;
 				coluna5_ataque_bem_sucedido = SETE_ALTOS;
+		oluna1_saida = SETE_ALTOS;
+                coluna2_saida = SETE_ALTOS;
+                coluna3_saida = SETE_ALTOS;
+                coluna4_saida = SETE_ALTOS;
+                coluna5_saida = SETE_ALTOS;
         end
     end
 endmodule
